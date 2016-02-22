@@ -1,7 +1,7 @@
 {
   "feedinfo": {
     "category": "Concerning", 
-    "provider_url": "https://www.deloitte.com", 
+    "provider_url": "https://raw.githubusercontent.com/boingomw/Lazerbearsharkpig/master/DeloitteAlerts", 
     "display_name": "AlertsDeloitte", 
     "name": "AlertsDeloitte", 
     "tech_data": "A feed of alert-worthy watchlists", 
@@ -22,7 +22,7 @@
         ]
       }, 
       "score": 60, 
-      "link": "http://127.0.0.1", 
+      "link": "https://raw.githubusercontent.com/boingomw/Lazerbearsharkpig/master/DeloitteAlerts", 
       "id": "66b784e75fd4ab0a2abdf6336ca3fee8"
     }, 
     {
