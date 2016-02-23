@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1456259117, 
+      "timestamp": 1456259498, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv", 
-      "id": "1dbe900a51faa66a1fb914e9a295993f"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
+      "id": "3548a9b3b373305438a196c79e4c3a24"
     }, 
     {
       "title": "Bluecherry Security Agent", 
-      "timestamp": 1456259117, 
+      "timestamp": 1456259498, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv", 
-      "id": "2f2990ae0c61aea7a47854b77911f99b"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
+      "id": "4d97a6dadf1e312035cc72f47b285f87"
     }, 
     {
       "title": "Start or stop splunkd", 
-      "timestamp": 1456259117, 
+      "timestamp": 1456259498, 
       "iocs": {
         "query": [
           {
@@ -52,8 +52,8 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv", 
-      "id": "e2ea3ae9893f845c96ecd1657c749e5b"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
+      "id": "6df03e6038bc2d3936f41abdeef1d108"
     }
   ]
 }
