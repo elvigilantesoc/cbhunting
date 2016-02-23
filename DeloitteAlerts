@@ -2,8 +2,8 @@
   "feedinfo": {
     "category": "Concerning", 
     "provider_url": "https://github.com/boingomw/Lazerbearsharkpig", 
-    "display_name": "AlertsDeloitte", 
-    "name": "AlertsDeloitte", 
+    "display_name": "DeloitteAlerts", 
+    "name": "DeloitteAlerts", 
     "tech_data": "A feed of alert-worthy watchlists", 
     "summary": "Watchlists that generally trigger when something happened that is odd enough that it should be investigated", 
     "icon_small": "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", 
@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Usage - Sc.exe - Any except w32time", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -27,7 +27,7 @@
     }, 
     {
       "title": "Svchost - Suspicious Parent Process", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -42,7 +42,7 @@
     }, 
     {
       "title": "Network Connections to Non-private networks - Unsigned binaries", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -57,7 +57,7 @@
     }, 
     {
       "title": "Usage - cmd.exe - Non-std path", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -72,7 +72,7 @@
     }, 
     {
       "title": "Execution - Cmd.exe - unusual parent", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -87,7 +87,7 @@
     }, 
     {
       "title": "Execution - Cmd.exe - Vulnerable app launching", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -102,7 +102,7 @@
     }, 
     {
       "title": "Execution - Recycle bin", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -117,7 +117,7 @@
     }, 
     {
       "title": "Execution - Svchost running under an unusual user context", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -132,7 +132,7 @@
     }, 
     {
       "title": "Zeus Dropper - Svchost from unsigned parent", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -147,7 +147,7 @@
     }, 
     {
       "title": "Usage - net.exe - Administrator", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -162,7 +162,7 @@
     }, 
     {
       "title": "Usage - at.exe - Any", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -177,7 +177,7 @@
     }, 
     {
       "title": "Execution - Adobe launching unsigned binary", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -192,7 +192,7 @@
     }, 
     {
       "title": "Usage - non-gui registry editor reg.exe - Any", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -207,7 +207,7 @@
     }, 
     {
       "title": "Usage - Windows Credential Editor - Any", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -222,7 +222,7 @@
     }, 
     {
       "title": "Usage - regedit - Any", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
@@ -237,7 +237,7 @@
     }, 
     {
       "title": "Shim Installer not from trustedinstaller.exe", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456261546, 
       "iocs": {
         "query": [
           {
