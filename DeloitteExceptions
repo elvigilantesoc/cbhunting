@@ -12,12 +12,12 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456260513, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22net%20start%20safe%22%20OR%20cmdline%3A%22net%20stop%20safe%22"
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22start%20safe%22%20OR%20cmdline%3A%22stop%20safe%22"
           }
         ]
       }, 
@@ -27,7 +27,7 @@
     }, 
     {
       "title": "Bluecherry Security Agent", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456260513, 
       "iocs": {
         "query": [
           {
@@ -42,12 +42,12 @@
     }, 
     {
       "title": "Start or stop splunkd", 
-      "timestamp": 1456259498, 
+      "timestamp": 1456260513, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22net%20start%20splunkd%22%20OR%20cmdline%3A%22net%20stop%20splunkd%22"
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22start%20splunkd%22%20OR%20cmdline%3A%22stop%20splunkd%22"
           }
         ]
       }, 
