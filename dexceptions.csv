@@ -1,2 +1,3 @@
 title,index_type,link,score,query
-Start or stop Encase Safe,events,https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv,1,cmdline:"net  start safe" OR cmdline:"net stop safe"
+Start or stop Encase Safe,events,https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv,1,hostname:Puget-* cmdline:"net  start safe" OR cmdline:"net stop safe"
+Bluecherry Security Agent,events,https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv,1,hostname:Puget-* md5:CA6A284B50B827BD21054EAC7F0225EC
