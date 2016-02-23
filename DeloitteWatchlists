@@ -12,12 +12,12 @@
   "reports": [
     {
       "title": "Non-System_Filemods_to_system32", 
-      "timestamp": 1456255961, 
+      "timestamp": 1456258553, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=filemod%3Ac%3A%5Cwindows%5Csystem32%2A%20-path%3Ac%3A%5Cwindows%5C%2A"
+            "search_query": "cb.urlver=1&q=filemod%3Ac%3A%5Cwindows%5Csystem32%2A%20-path%3Ac%3A%5Cwindows%5C%2A%20-alliance_score_deloitteexceptions%3A%2A"
           }
         ]
       }, 
@@ -27,12 +27,12 @@
     }, 
     {
       "title": "Autoruns", 
-      "timestamp": 1456255961, 
+      "timestamp": 1456258553, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=%28%28regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cuserinit%20OR%20regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cshell%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Cexplorer%5Cbrowser%5C%20helper%5C%20objects%5C%2A%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Crun%5C%2A%29%20AND%20-path%3A%22c%3A%5Cprogram%20files%20%28x86%29%5Cgoogle%5Cchrome%5Capplication%5Cchrome.exe%22%29"
+            "search_query": "cb.urlver=1&q=%28%28regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cuserinit%20OR%20regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cshell%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Cexplorer%5Cbrowser%5C%20helper%5C%20objects%5C%2A%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Crun%5C%2A%29%20AND%20-path%3A%22c%3A%5Cprogram%20files%20%28x86%29%5Cgoogle%5Cchrome%5Capplication%5Cchrome.exe%22%29%20-alliance_score_deloitteexceptions%3A%2A"
           }
         ]
       }, 
@@ -42,12 +42,12 @@
     }, 
     {
       "title": "Execution_MS_signed_from_non-default_dirs", 
-      "timestamp": 1456255961, 
+      "timestamp": 1456258553, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=digsig_publisher%3A%22Microsoft%20Corporation%22%20%20-path%3Awindows%2A%20%20-path%3Aprogram%5C%20files"
+            "search_query": "cb.urlver=1&q=digsig_publisher%3A%22Microsoft%20Corporation%22%20%20-path%3Awindows%2A%20%20-path%3Aprogram%5C%20files%20-alliance_score_deloitteexceptions%3A%2A"
           }
         ]
       }, 
@@ -57,12 +57,12 @@
     }, 
     {
       "title": "Network Connections to Non-loopback - Unsigned binaries", 
-      "timestamp": 1456255961, 
+      "timestamp": 1456258553, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=netconn_count%3A%5B1%20TO%20%2A%5D%20AND%20-digsig_result%3Asigned%20AND%20-ipaddr%3A127.0.0.1"
+            "search_query": "cb.urlver=1&q=netconn_count%3A%5B1%20TO%20%2A%5D%20AND%20-digsig_result%3Asigned%20AND%20-ipaddr%3A127.0.0.1%20-alliance_score_deloitteexceptions%3A%2A"
           }
         ]
       }, 

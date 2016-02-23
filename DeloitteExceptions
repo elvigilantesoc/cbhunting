@@ -12,18 +12,33 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1456255961, 
+      "timestamp": 1456258553, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=cmdline%3A%22net%20%20start%20safe%22%20OR%20cmdline%3A%22net%20stop%20safe%22"
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22net%20%20start%20safe%22%20OR%20cmdline%3A%22net%20stop%20safe%22"
           }
         ]
       }, 
-      "score": -100, 
+      "score": 1, 
       "link": "https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv", 
       "id": "1dbe900a51faa66a1fb914e9a295993f"
+    }, 
+    {
+      "title": "Bluecherry Security Agent", 
+      "timestamp": 1456258553, 
+      "iocs": {
+        "query": [
+          {
+            "index_type": "events", 
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20md5%3ACA6A284B50B827BD21054EAC7F0225EC"
+          }
+        ]
+      }, 
+      "score": 1, 
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv", 
+      "id": "2f2990ae0c61aea7a47854b77911f99b"
     }
   ]
 }
