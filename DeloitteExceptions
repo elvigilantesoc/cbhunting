@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1456261546, 
+      "timestamp": 1456263134, 
       "iocs": {
         "query": [
           {
@@ -27,12 +27,12 @@
     }, 
     {
       "title": "Bluecherry Security Agent", 
-      "timestamp": 1456261546, 
+      "timestamp": 1456263134, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20md5%3ACA6A284B50B827BD21054EAC7F0225EC"
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20path%3A%22c%3A%5Cprogram%20files%20%28x86%29%5Cbluecherry%20client%5Cbluecherryclient.exe%22%20%20md5%3ACA6A284B50B827BD21054EAC7F0225EC%20"
           }
         ]
       }, 
@@ -42,7 +42,7 @@
     }, 
     {
       "title": "Start or stop splunkd", 
-      "timestamp": 1456261546, 
+      "timestamp": 1456263134, 
       "iocs": {
         "query": [
           {
@@ -54,6 +54,36 @@
       "score": 1, 
       "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
       "id": "6df03e6038bc2d3936f41abdeef1d108"
+    }, 
+    {
+      "title": "Syncthing related", 
+      "timestamp": 1456263134, 
+      "iocs": {
+        "query": [
+          {
+            "index_type": "events", 
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20path%3A%22c%3A%5Cusers%5Cmichael%5Cappdata%5Croaming%5Csynctrayzor%5Csyncthing.exe%22"
+          }
+        ]
+      }, 
+      "score": 1, 
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
+      "id": "d68ea6a107777a11f61926efd2bf9eaa"
+    }, 
+    {
+      "title": "Synctrazor related", 
+      "timestamp": 1456263134, 
+      "iocs": {
+        "query": [
+          {
+            "index_type": "events", 
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20path%3A%22c%3A%5Cprogram%20files%5Csynctrayzor%5Csynctrayzor.exe%22"
+          }
+        ]
+      }, 
+      "score": 1, 
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
+      "id": "3883383a4d9e6ad9bdacb5286cfda135"
     }
   ]
 }
