@@ -1,0 +1,2 @@
+title,index_type,link,score,query
+Start or stop Encase Safe,events,https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv,1,cmdline:"net  start safe" OR cmdline:"net stop safe"

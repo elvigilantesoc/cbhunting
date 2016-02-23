@@ -1,7 +1,7 @@
 {
   "feedinfo": {
     "category": "Notable", 
-    "provider_url": "http://www.deloitte.com", 
+    "provider_url": "https://github.com/boingomw/Lazerbearsharkpig", 
     "display_name": "Noteable watchlists", 
     "name": "DeloitteWatchlists", 
     "tech_data": "A feed of notable watchlists", 
@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Non-System_Filemods_to_system32", 
-      "timestamp": 1449072528, 
+      "timestamp": 1456255961, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 40, 
-      "link": "http://127.0.0.1", 
-      "id": "658d4bf70db83751fb4712d4ab909d65"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/dwatchlists.csv", 
+      "id": "7180b8f5546bcb77262632997e11ba0b"
     }, 
     {
       "title": "Autoruns", 
-      "timestamp": 1449072528, 
+      "timestamp": 1456255961, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 20, 
-      "link": "http://127.0.0.1", 
-      "id": "949d6a603ea0f8a0fcd5fd785fa1d822"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/dwatchlists.csv", 
+      "id": "ecc26c35f7d8d36f7572ad813fbccd4a"
     }, 
     {
       "title": "Execution_MS_signed_from_non-default_dirs", 
-      "timestamp": 1449072528, 
+      "timestamp": 1456255961, 
       "iocs": {
         "query": [
           {
@@ -52,12 +52,12 @@
         ]
       }, 
       "score": 40, 
-      "link": "http://127.0.0.1", 
-      "id": "45079322decf378703c30bda545f0ae8"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/dwatchlists.csv", 
+      "id": "f6be2e291419bc4fb79972b07e0e1970"
     }, 
     {
       "title": "Network Connections to Non-loopback - Unsigned binaries", 
-      "timestamp": 1449072528, 
+      "timestamp": 1456255961, 
       "iocs": {
         "query": [
           {
@@ -67,8 +67,8 @@
         ]
       }, 
       "score": 70, 
-      "link": "http://127.0.0.1", 
-      "id": "55efacf2f1d3883af16318d905f3c705"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/dwatchlists.csv", 
+      "id": "44692106aa611e9456209e62e373a193"
     }
   ]
 }
