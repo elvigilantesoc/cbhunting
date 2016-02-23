@@ -12,12 +12,12 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1456258553, 
+      "timestamp": 1456259117, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22net%20%20start%20safe%22%20OR%20cmdline%3A%22net%20stop%20safe%22"
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22net%20start%20safe%22%20OR%20cmdline%3A%22net%20stop%20safe%22"
           }
         ]
       }, 
@@ -27,7 +27,7 @@
     }, 
     {
       "title": "Bluecherry Security Agent", 
-      "timestamp": 1456258553, 
+      "timestamp": 1456259117, 
       "iocs": {
         "query": [
           {
@@ -39,6 +39,21 @@
       "score": 1, 
       "link": "https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv", 
       "id": "2f2990ae0c61aea7a47854b77911f99b"
+    }, 
+    {
+      "title": "Start or stop splunkd", 
+      "timestamp": 1456259117, 
+      "iocs": {
+        "query": [
+          {
+            "index_type": "events", 
+            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20cmdline%3A%22net%20start%20splunkd%22%20OR%20cmdline%3A%22net%20stop%20splunkd%22"
+          }
+        ]
+      }, 
+      "score": 1, 
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/dexceptions.csv", 
+      "id": "e2ea3ae9893f845c96ecd1657c749e5b"
     }
   ]
 }
