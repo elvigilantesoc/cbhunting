@@ -62,7 +62,7 @@
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20path%3A%22c%3A%5Cusers%5Cmichael%5Cappdata%5Croaming%5Csynctrayzor%5Csyncthing.exe%22"
+            "search_query": "cb.urlver=1&q=path%3A%22c%3A%5Cusers%5Cmichael%5Cappdata%5Croaming%5Csynctrayzor%5Csyncthing.exe%22"
           }
         ]
       }, 
@@ -77,7 +77,7 @@
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20path%3A%22c%3A%5Cprogram%20files%5Csynctrayzor%5Csynctrayzor.exe%22"
+            "search_query": "cb.urlver=1&q=path%3A%22c%3A%5Cprogram%20files%5Csynctrayzor%5Csynctrayzor.exe%22"
           }
         ]
       }, 
