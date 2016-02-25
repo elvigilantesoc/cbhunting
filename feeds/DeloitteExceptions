@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1456263134, 
+      "timestamp": 1456367098, 
       "iocs": {
         "query": [
           {
@@ -27,7 +27,7 @@
     }, 
     {
       "title": "Bluecherry Security Agent", 
-      "timestamp": 1456263134, 
+      "timestamp": 1456367098, 
       "iocs": {
         "query": [
           {
@@ -42,7 +42,7 @@
     }, 
     {
       "title": "Start or stop splunkd", 
-      "timestamp": 1456263134, 
+      "timestamp": 1456367098, 
       "iocs": {
         "query": [
           {
@@ -57,12 +57,12 @@
     }, 
     {
       "title": "Syncthing related", 
-      "timestamp": 1456263134, 
+      "timestamp": 1456367098, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20path%3A%22c%3A%5Cusers%5Cmichael%5Cappdata%5Croaming%5Csynctrayzor%5Csyncthing.exe%22"
+            "search_query": "cb.urlver=1&q=path%3A%22c%3A%5Cusers%5Cmichael%5Cappdata%5Croaming%5Csynctrayzor%5Csyncthing.exe%22"
           }
         ]
       }, 
@@ -72,12 +72,12 @@
     }, 
     {
       "title": "Synctrazor related", 
-      "timestamp": 1456263134, 
+      "timestamp": 1456367098, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=hostname%3APuget-%2A%20path%3A%22c%3A%5Cprogram%20files%5Csynctrayzor%5Csynctrayzor.exe%22"
+            "search_query": "cb.urlver=1&q=path%3A%22c%3A%5Cprogram%20files%5Csynctrayzor%5Csynctrayzor.exe%22"
           }
         ]
       }, 
