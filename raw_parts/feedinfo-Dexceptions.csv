@@ -1,0 +1,2 @@
+category,name,display_name,provider_url,summary,tech_data,icon,icon_small
+"Good","DeloitteExceptions","Exceptions to Alerts and Watchlists","https://github.com/boingomw/Lazerbearsharkpig","Exceptions to alerts and watchlists.  Events/systems/binaries that are known good in the specific environment being monitored","A feed of exceptions",Deloitte-Exceptions-lrg.png,Deloitte-exceptions-small.png

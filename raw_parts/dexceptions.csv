@@ -1,0 +1,7 @@
+title,index_type,link,score,query
+Start or stop Encase Safe,events,https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv,1,hostname:Puget-* cmdline:"start safe" OR cmdline:"stop safe"
+Bluecherry Security Agent,events,https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv,1,hostname:Puget-* path:"c:\program files (x86)\bluecherry client\bluecherryclient.exe"  md5:CA6A284B50B827BD21054EAC7F0225EC 
+Start or stop splunkd,events,https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv,1,hostname:Puget-* cmdline:"start splunkd" OR cmdline:"stop splunkd"
+Syncthing related,events,https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv,1,path:"c:\users\michael\appdata\roaming\synctrayzor\syncthing.exe"
+Synctrazor related,events,https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv,1,path:"c:\program files\synctrayzor\synctrayzor.exe"
+

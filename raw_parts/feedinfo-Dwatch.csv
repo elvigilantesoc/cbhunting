@@ -1,0 +1,2 @@
+category,name,display_name,provider_url,summary,tech_data,icon,icon_small
+"Notable","DeloitteWatchlists","Noteable watchlists","https://github.com/boingomw/Lazerbearsharkpig","Watchlists that show events of interest, but have a larger number of potential false positives, so should probably not be set to alert on trigger.","A feed of notable watchlists",Deloitte-Watchlists-lrg.png,Deloitte-small.png
