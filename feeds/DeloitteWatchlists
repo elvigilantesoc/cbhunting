@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Non-System_Filemods_to_system32", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 40, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dwatchlists.csv", 
-      "id": "9ab3786e1248dd55884025aa98494a29"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
+      "id": "ed5c3ecac2e0639693163c20834e059e"
     }, 
     {
       "title": "Autoruns", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 20, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dwatchlists.csv", 
-      "id": "27b962f8906abf677c4673364fb2133b"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
+      "id": "73c1471294dbd07f0f64ec682845cc2a"
     }, 
     {
       "title": "Execution_MS_signed_from_non-default_dirs", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -52,12 +52,12 @@
         ]
       }, 
       "score": 40, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dwatchlists.csv", 
-      "id": "b8d1f7478ac2d5908848818eec9b59e3"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
+      "id": "39349766639087869218316deaac2df7"
     }, 
     {
       "title": "Network Connections to Non-loopback - Unsigned binaries", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -67,8 +67,8 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dwatchlists.csv", 
-      "id": "1c1834b1e09cc7b1608072f5cc010ab0"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
+      "id": "cd43d960965f413eea496f3473ae2257"
     }
   ]
 }

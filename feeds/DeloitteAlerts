@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Usage - Sc.exe - Any except w32time", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "4040247e6bfb5bd684bb855c0a74d873"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "a3ef64bc006d29d3f708d6b890077557"
     }, 
     {
       "title": "Svchost - Suspicious Parent Process", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "d26942767cc4f0b423419579f7f20208"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "0644d74ab7765d039c3c77a8f8c8e89c"
     }, 
     {
       "title": "Network Connections to Non-private networks - Unsigned binaries", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -52,12 +52,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "6ecb151f00ebac9ad0fc64019a05a181"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "502a40d0f275251a6fbf3e830a503597"
     }, 
     {
       "title": "Usage - cmd.exe - Non-std path", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -67,12 +67,12 @@
         ]
       }, 
       "score": 95, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "0e2837f14fe4cbce4e998303abe3a868"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "941ac9988508f71518d4e5d97636d684"
     }, 
     {
       "title": "Execution - Cmd.exe - unusual parent", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -82,12 +82,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "ea326dd7614a6696d2d58e80e334145c"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "97f9fa37c708f6b651ea8c0e9c841665"
     }, 
     {
       "title": "Execution - Cmd.exe - Vulnerable app launching", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -97,12 +97,12 @@
         ]
       }, 
       "score": 80, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "e9e98cd91a2a744bb68999d9e77d94cd"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "e761a7bb6a42a06a41790ba118b8eadc"
     }, 
     {
       "title": "Execution - Recycle bin", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -112,12 +112,12 @@
         ]
       }, 
       "score": 90, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "d5a2505cdb2df62aa7e8a17913e98e7b"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "d571568e9c08913655e8567bac22293f"
     }, 
     {
       "title": "Execution - Svchost running under an unusual user context", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -127,12 +127,12 @@
         ]
       }, 
       "score": 90, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "c10949b408317aba51fccf3623df71cc"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "fd81dce24ab39d5f23eef420317c66dc"
     }, 
     {
       "title": "Zeus Dropper - Svchost from unsigned parent", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -142,12 +142,12 @@
         ]
       }, 
       "score": 100, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "c4c983748ea108b5fd154d4d7a6188f7"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "f0baebdd2b8ff5930fb57ffa2efaaa10"
     }, 
     {
       "title": "Usage - net.exe - Administrator", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -157,12 +157,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "adcf4038105329f265f5c610376f3ae6"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "b61302ceae4d85bdad25599ec434805d"
     }, 
     {
       "title": "Usage - at.exe - Any", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -172,12 +172,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "01698ea1dde3ec8064413272ba174ff3"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "cbc99fd8732a897c3ec837052562259a"
     }, 
     {
       "title": "Execution - Adobe launching unsigned binary", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -187,12 +187,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "68143453e8d2833738958ec19f7cd1a4"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "681e01323818012a912bd347a129da84"
     }, 
     {
       "title": "Usage - non-gui registry editor reg.exe - Any", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -202,12 +202,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "93964cd168749f787ef4d2c98394374e"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "7ac856efd5873deba5ea3a920999559f"
     }, 
     {
       "title": "Usage - Windows Credential Editor - Any", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -217,12 +217,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "4e2284e2d3765c7924bdffdbda600d24"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "f8c30a07c746759acf09d0305e81f318"
     }, 
     {
       "title": "Usage - regedit - Any", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -232,12 +232,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "ea1dd15eb7fed92e35de2cca24f1ac13"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "1420484ee13593c810ddcbb9d758364d"
     }, 
     {
       "title": "Shim Installer not from trustedinstaller.exe", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -247,8 +247,8 @@
         ]
       }, 
       "score": 90, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dalerts.csv", 
-      "id": "6a6ae53619396d1a3127bb534f3581a5"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
+      "id": "1558be4cda6efed60f554a204ea9e633"
     }
   ]
 }

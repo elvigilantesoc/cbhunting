@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
-      "id": "3548a9b3b373305438a196c79e4c3a24"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
+      "id": "267513483c54c37a3a78222ab0e056ba"
     }, 
     {
       "title": "Bluecherry Security Agent", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
-      "id": "4d97a6dadf1e312035cc72f47b285f87"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
+      "id": "7518b2909aec0d38bf436aa2349ed8fc"
     }, 
     {
       "title": "Start or stop splunkd", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -52,12 +52,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
-      "id": "6df03e6038bc2d3936f41abdeef1d108"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
+      "id": "f6fb5dd6a2430d2874b2afc5456730f7"
     }, 
     {
       "title": "Syncthing related", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -67,12 +67,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
-      "id": "d68ea6a107777a11f61926efd2bf9eaa"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
+      "id": "049b84f26f9ab28ea139f697e889fb70"
     }, 
     {
       "title": "Synctrazor related", 
-      "timestamp": 1456367098, 
+      "timestamp": 1456378931, 
       "iocs": {
         "query": [
           {
@@ -82,8 +82,8 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/dexceptions.csv", 
-      "id": "3883383a4d9e6ad9bdacb5286cfda135"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
+      "id": "38aba210bfe4614464cf89dfa07c808f"
     }
   ]
 }
