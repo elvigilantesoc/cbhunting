@@ -1,0 +1,46 @@
+{
+  "feedinfo": {
+    "provider_url": "https://palevotracker.abuse.ch/blocklists.php?download=ipblocklist", 
+    "display_name": "palevo", 
+    "name": "palevo", 
+    "tech_data": "There are no requirements to share any data to receive this feed.", 
+    "summary": "palevo", 
+    "version": 1
+  }, 
+  "reports": [
+    {
+      "title": "palevo_report", 
+      "timestamp": 1456772422, 
+      "iocs": {
+        "ipv4": [
+          "107.150.36.226", 
+          "173.230.133.99", 
+          "185.68.16.187", 
+          "189.236.206.143", 
+          "199.2.137.20", 
+          "199.2.137.25", 
+          "67.210.170.169", 
+          "76.74.255.138", 
+          "82.196.6.164", 
+          "91.208.194.18"
+        ], 
+        "dns": [
+          "arta.romail3arnest.info", 
+          "av.babypin.net", 
+          "bff.7oorq8.com", 
+          "legionarios.servecounterstrike.com", 
+          "mariposita.web-personal.org", 
+          "masterkey.com", 
+          "mst.com", 
+          "rastu.com", 
+          "shv4.no-ip.biz", 
+          "shv4b.getmyip.com", 
+          "webmail.drshells.net"
+        ]
+      }, 
+      "score": 100, 
+      "link": "http://siftworkstation/intel/palevo_ioc", 
+      "id": "41892fe2a17fb59d0feae72e27851720"
+    }
+  ]
+}
