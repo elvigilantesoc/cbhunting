@@ -32,7 +32,7 @@
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=%28%28regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cuserinit%20OR%20regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cshell%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Cexplorer%5Cbrowser%5C%20helper%5C%20objects%5C%2A%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Crun%5C%2A%29%20AND%20-path%3A%22c%3A%5Cprogram%20files%20%28x86%29%5Cgoogle%5Cchrome%5Capplication%5Cchrome.exe%22%29%20-alliance_score_deloitteexceptions%3A%2A"
+            "search_query": "cb.urlver=1&q=%28%28%28regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cuserinit%20OR%20regmod%3Aregistry%5Cmachine%5Csoftware%5Cmicrosoft%5Cwindows%5C%20nt%5Ccurrentversion%5Cwinlogon%5Cshell%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Cexplorer%5Cbrowser%5C%20helper%5C%20objects%5C%2A%20OR%20regmod%3Asoftware%5Cmicrosoft%5Cwindows%5Ccurrentversion%5Crun%5C%2A%29%20AND%20-path%3A%22c%3A%5Cprogram%20files%20%28x86%29%5Cgoogle%5Cchrome%5Capplication%5Cchrome.exe%22%29%20-alliance_score_deloitteexceptions%3A%2A%29"
           }
         ]
       }, 
