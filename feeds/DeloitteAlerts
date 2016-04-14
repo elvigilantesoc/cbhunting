@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Usage - Sc.exe - Any except w32time", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "a3ef64bc006d29d3f708d6b890077557"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "2710c06fed34ec24cd8b6cf7725f6aa3"
     }, 
     {
       "title": "Svchost - Suspicious Parent Process", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "0644d74ab7765d039c3c77a8f8c8e89c"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "338f0eed5ac60d2669ae3531dd4b9aaa"
     }, 
     {
       "title": "Network Connections to Non-private networks - Unsigned binaries", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -52,12 +52,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "502a40d0f275251a6fbf3e830a503597"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "19b1d781f58f3d68ef8efeba52785f7c"
     }, 
     {
       "title": "Usage - cmd.exe - Non-std path", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -67,12 +67,12 @@
         ]
       }, 
       "score": 95, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "941ac9988508f71518d4e5d97636d684"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "f89cc516eb46a5f52746830084fccf8a"
     }, 
     {
       "title": "Execution - Cmd.exe - unusual parent", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -82,12 +82,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "97f9fa37c708f6b651ea8c0e9c841665"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "4ab520593b4d57e6e7cfa2ebbe561218"
     }, 
     {
       "title": "Execution - Cmd.exe - Vulnerable app launching", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -97,12 +97,12 @@
         ]
       }, 
       "score": 80, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "e761a7bb6a42a06a41790ba118b8eadc"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "85923599b0301291ae361f695787ced5"
     }, 
     {
       "title": "Execution - Recycle bin", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -112,12 +112,12 @@
         ]
       }, 
       "score": 90, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "d571568e9c08913655e8567bac22293f"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "8ee6cd0ad5a3f1a438b0c7ee0913e23f"
     }, 
     {
       "title": "Execution - Svchost running under an unusual user context", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -127,12 +127,12 @@
         ]
       }, 
       "score": 90, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "fd81dce24ab39d5f23eef420317c66dc"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "a0f8db8aeda8b2d1c5da3c2eda035ede"
     }, 
     {
       "title": "Zeus Dropper - Svchost from unsigned parent", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -142,12 +142,12 @@
         ]
       }, 
       "score": 100, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "f0baebdd2b8ff5930fb57ffa2efaaa10"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "e100dbef44e326de8d42584fd2743db2"
     }, 
     {
       "title": "Usage - net.exe - Administrator", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -157,12 +157,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "b61302ceae4d85bdad25599ec434805d"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "63a7440728d25c82d0586a63c1a24046"
     }, 
     {
       "title": "Usage - at.exe - Any", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -172,27 +172,27 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "cbc99fd8732a897c3ec837052562259a"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "c8de1d17deff7c4aecb13087f32e9b1d"
     }, 
     {
       "title": "Execution - Adobe launching unsigned binary", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=parent_name%3Aacrord32.exe%20-digsig_publisher%3A%22Adobe%20Systems"
+            "search_query": "cb.urlver=1&q=parent_name%3Aacrord32.exe%20-digsig_publisher%3A%22Adobe%20Systems%2C%20Incorporated%22%20AND%20os_type%3Awindows%20-alliance_score_deloitteexceptions%3A%5B1%20TO%20%2A%5D"
           }
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "681e01323818012a912bd347a129da84"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "7a4ce529996671785a9d7cb18e343578"
     }, 
     {
       "title": "Usage - non-gui registry editor reg.exe - Any", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -202,12 +202,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "7ac856efd5873deba5ea3a920999559f"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "4eabd46c89f2ec5640ae356737717c5f"
     }, 
     {
       "title": "Usage - Windows Credential Editor - Any", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -217,12 +217,12 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "f8c30a07c746759acf09d0305e81f318"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "7496fdbd4ed06c42c83911a038f7878d"
     }, 
     {
       "title": "Usage - regedit - Any", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -232,12 +232,12 @@
         ]
       }, 
       "score": 60, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "1420484ee13593c810ddcbb9d758364d"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "d3f552baf569780615474cb0cd43d967"
     }, 
     {
       "title": "Shim Installer not from trustedinstaller.exe", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {
@@ -247,12 +247,12 @@
         ]
       }, 
       "score": 90, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv", 
-      "id": "1558be4cda6efed60f554a204ea9e633"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteAlerts.tsv", 
+      "id": "0554a74152a15c49ae507cd810c4df59"
     }, 
     {
       "title": "Locky Ransomware", 
-      "timestamp": 1460679229, 
+      "timestamp": 1460687523, 
       "iocs": {
         "query": [
           {

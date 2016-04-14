@@ -8,6 +8,7 @@ import urllib
 import json
 import hashlib
 import argparse
+import re
 
 sys.path.insert(0, "../../")
 from cbfeeds.feed import CbReport
@@ -17,7 +18,7 @@ from urlencode import query_encoder
 
 
 # parses queries from CSV file & raw_input
-def get_queries(query_src, datatype):
+def get_queries(query_src, datatype, pretty_output_path):
     queries = []
     if datatype == 'csv':
         print "[*] Queries:\n-----------"
@@ -26,6 +27,12 @@ def get_queries(query_src, datatype):
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     print row['query']
+                    # hack to replace link path with pretty path. Works for GitHub master branch only. Not pythonic
+                    if 'master/' in str(row['link']):
+                        search_string = 'master/(.*)'
+                        replace_string = pretty_output_path[3:]
+                        search_handler = re.findall(search_string, row['link'])[0]
+                        row['link'] = row['link'].replace(search_handler, replace_string)
                     queries.append(row)
         except Exception:
             sys.stderr.write("[-] Error! Could not open %s\n" % query_src)
@@ -40,6 +47,7 @@ def get_queries(query_src, datatype):
         q['score'] = raw_input("Score (0-100) :> ")
         q['link'] = raw_input("Report Link :> ")
         queries.append(q)
+
 
     return queries
 
@@ -86,8 +94,8 @@ def get_feedhdr(feedhdrsrc):
     return feedinfo
 
 # initializes and orchestrates query feed generation
-def create(query_file, datatype,feedinfosrc=''):
-    queries = get_queries(query_file, datatype)
+def create(query_file, datatype, feedinfosrc='', pretty_output_path=''):
+    queries = get_queries(query_file, datatype, pretty_output_path)
     reports = build_reports(queries)
     if feedinfosrc:
     	feedhdrinfo = get_feedhdr(feedinfosrc)
@@ -123,12 +131,25 @@ def create(query_file, datatype,feedinfosrc=''):
 
     return created_feed
 
+
+def pretty_write(raw_csv, output_path):
+    """
+    Take the csv used for query information, and write it in a nice way to allow for GitHub to render it
+
+    :param raw_csv: Path to input CSV file
+    :param output_path: Path to write TSV formatted file
+    """
+
+    csv.writer(file(output_path, 'w+'), delimiter='\t').writerows(csv.reader(open(raw_csv)))
+
 # boilerplate main
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
     parser.add_argument("--feedinfosrc", '-f', type=str, help="Parses CSV for Intel feed information")
     parser.add_argument("--csv", '-c', type=str, help="Parses CSV for query feed information")
     parser.add_argument('--output', '-o', type=str, default="query_feed.txt", help="Specify output file. Default is query_feed.txt")
+    parser.add_argument('--pretty', '-p', type=str, default='pretty_output.tsv',
+                        help="Specify pretty output file. Default is pretty_output.tsv")
     args = parser.parse_args()
 
     if args.output:
@@ -137,16 +158,22 @@ if __name__ == "__main__":
     if args.csv:
         datatype = 'csv'
         query_src = args.csv
-	feed_src = args.feedinfosrc
+        feed_src = args.feedinfosrc
+        pretty_output_path = args.pretty
+
     else:
         datatype = 'raw'
         query_src = raw_input('[*] Query:> ')
 
     # begin feed generation process
-    reports = create(query_src, datatype,feed_src)
+    reports = create(query_src, datatype, feed_src, pretty_output_path)
     # store generated feed in output file
     with open(ofile, 'w+') as out:
         out.write(reports)
+    # write pretty file
+    pretty_write(query_src, pretty_output_path)
+
     # relay success to user
     print "\n[+] Query Feed:\n---------------\n" + reports
     print "\n[+] Feed was written to %s" % ofile
+    print "\n[+] Pretty file was written to %s" % pretty_output_path
