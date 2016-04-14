@@ -12,12 +12,12 @@
   "reports": [
     {
       "title": "Usage - Sc.exe - Any except w32time", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
             "index_type": "events", 
-            "search_query": "cb.urlver=1&q=process_name%3Asc.exe%20-cmdline%3A%22C%3A%5CWindows%5Csystem32%5Csc.exe%20start%20w32time%20task_started%22%20-alliance_score_deloitteexceptions%3A%5B1%20TO%20%2A%5D%20"
+            "search_query": "cb.urlver=1&q=process_name%3Asc.exe%20%28-cmdline%3A%22C%3A%5CWindows%5Csystem32%5Csc.exe%20start%20wuauserv%22%20OR%20-cmdline%3A%22C%3A%5CWindows%5Csystem32%5Csc.exe%20start%20w32time%20task_started%22%29%20-alliance_score_deloitteexceptions%3A%5B1%20TO%20%2A%5D"
           }
         ]
       }, 
@@ -27,7 +27,7 @@
     }, 
     {
       "title": "Svchost - Suspicious Parent Process", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -42,7 +42,7 @@
     }, 
     {
       "title": "Network Connections to Non-private networks - Unsigned binaries", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -57,7 +57,7 @@
     }, 
     {
       "title": "Usage - cmd.exe - Non-std path", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -72,7 +72,7 @@
     }, 
     {
       "title": "Execution - Cmd.exe - unusual parent", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -87,7 +87,7 @@
     }, 
     {
       "title": "Execution - Cmd.exe - Vulnerable app launching", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -102,7 +102,7 @@
     }, 
     {
       "title": "Execution - Recycle bin", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -117,7 +117,7 @@
     }, 
     {
       "title": "Execution - Svchost running under an unusual user context", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -132,7 +132,7 @@
     }, 
     {
       "title": "Zeus Dropper - Svchost from unsigned parent", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -147,7 +147,7 @@
     }, 
     {
       "title": "Usage - net.exe - Administrator", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -162,7 +162,7 @@
     }, 
     {
       "title": "Usage - at.exe - Any", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -177,7 +177,7 @@
     }, 
     {
       "title": "Execution - Adobe launching unsigned binary", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -192,7 +192,7 @@
     }, 
     {
       "title": "Usage - non-gui registry editor reg.exe - Any", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -207,7 +207,7 @@
     }, 
     {
       "title": "Usage - Windows Credential Editor - Any", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -222,7 +222,7 @@
     }, 
     {
       "title": "Usage - regedit - Any", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -237,7 +237,7 @@
     }, 
     {
       "title": "Shim Installer not from trustedinstaller.exe", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
@@ -252,7 +252,7 @@
     }, 
     {
       "title": "Locky Ransomware", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460679229, 
       "iocs": {
         "query": [
           {
