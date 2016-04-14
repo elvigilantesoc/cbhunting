@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Non-System_Filemods_to_system32", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688680, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 40, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
-      "id": "ed5c3ecac2e0639693163c20834e059e"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteWatchlists.tsv", 
+      "id": "396c7eaee1fd5f137661c83dc282b2c6"
     }, 
     {
       "title": "Autoruns", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688680, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 20, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
-      "id": "73c1471294dbd07f0f64ec682845cc2a"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteWatchlists.tsv", 
+      "id": "961592265b4c4bd1d86868c742712a05"
     }, 
     {
       "title": "Execution_MS_signed_from_non-default_dirs", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688680, 
       "iocs": {
         "query": [
           {
@@ -52,12 +52,12 @@
         ]
       }, 
       "score": 40, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
-      "id": "39349766639087869218316deaac2df7"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteWatchlists.tsv", 
+      "id": "ad9c2b484727c1f32875fde3946da3a3"
     }, 
     {
       "title": "Network Connections to Non-loopback - Unsigned binaries", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688680, 
       "iocs": {
         "query": [
           {
@@ -67,8 +67,8 @@
         ]
       }, 
       "score": 70, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dwatchlists.csv", 
-      "id": "cd43d960965f413eea496f3473ae2257"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteWatchlists.tsv", 
+      "id": "65ac664e1c8906fedf76d2b1e0d2fc53"
     }
   ]
 }

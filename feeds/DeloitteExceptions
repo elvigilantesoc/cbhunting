@@ -12,7 +12,7 @@
   "reports": [
     {
       "title": "Start or stop Encase Safe", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688685, 
       "iocs": {
         "query": [
           {
@@ -22,12 +22,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
-      "id": "267513483c54c37a3a78222ab0e056ba"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteExceptions.tsv", 
+      "id": "319f1b603b84e481a03b2c0da5f902fa"
     }, 
     {
       "title": "Bluecherry Security Agent", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688685, 
       "iocs": {
         "query": [
           {
@@ -37,12 +37,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
-      "id": "7518b2909aec0d38bf436aa2349ed8fc"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteExceptions.tsv", 
+      "id": "be87c1c3066ad3770fdeed5bb3621e00"
     }, 
     {
       "title": "Start or stop splunkd", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688685, 
       "iocs": {
         "query": [
           {
@@ -52,12 +52,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
-      "id": "f6fb5dd6a2430d2874b2afc5456730f7"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteExceptions.tsv", 
+      "id": "90b3b042d6d25183373d7a7f630a4a32"
     }, 
     {
       "title": "Syncthing related", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688685, 
       "iocs": {
         "query": [
           {
@@ -67,12 +67,12 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
-      "id": "049b84f26f9ab28ea139f697e889fb70"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteExceptions.tsv", 
+      "id": "7802469ceb9fc5138e7e68e56fb2f09a"
     }, 
     {
       "title": "Synctrazor related", 
-      "timestamp": 1459174947, 
+      "timestamp": 1460688685, 
       "iocs": {
         "query": [
           {
@@ -82,8 +82,8 @@
         ]
       }, 
       "score": 1, 
-      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dexceptions.csv", 
-      "id": "38aba210bfe4614464cf89dfa07c808f"
+      "link": "https://github.com/boingomw/Lazerbearsharkpig/blob/master/pretty_feed_links/DeloitteExceptions.tsv", 
+      "id": "0c47cb3d83c2a8b97aef9837f95fb2a0"
     }
   ]
 }
