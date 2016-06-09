@@ -1,0 +1,2 @@
+category,name,display_name,provider_url,summary,tech_data,icon,icon_small
+Notable,DeloitteHunts,DeloitteHunts,https://github.com/boingomw/Lazerbearsharkpig,Queries that could provide evidence of 'badness' in an environment. Not suggested to enable alerts on entire feed.,Queries that have been useful.,../raw_parts/Deloitte-Watchlists-lrg.png,../raw_parts/Deloitte-small.png

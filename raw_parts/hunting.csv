@@ -1,0 +1,81 @@
+title,index_type,link,score,query
+Execution from AppData folder,events,Local File,50,(path:appdata\* or path:Application Data\*)
+Shells run by SYSTEM,events,Local File,50,(process_name:powershell.exe OR process_name:cmd.exe) username:system
+Remote execution utilities e.g. PSExec,events,Local File,50,(process_name:psexec.exe OR process_name:rexec.exe OR process_name:rcmd.exe or process_name:xcmd.exe)
+Firewall Modificiations,events,Local File,50,(regmod:\registry\machine\SYSTEM\*\services\SharedAccess\*\FirewallPolicy\*\EnableFirewall AND -process_name:svchost.exe) OR (cmdline:netsh AND cmdline:advfirewall)
+Vulnerable software that spawned a shell,events,Local File,50,alliance_score_nvd:* AND (childproc_name:powershell.exe OR childproc_name:cmd.exe)
+"Processes that have VT score > 10, and more than 1 network connection",events,Local File,50,alliance_score_virustotal:[10 TO *] AND netconn_count:[1 TO *]
+"Command prompt started by commonly compromised programs (browsers, Acrobat, Java, etc.) ",events,Local File,50,childproc_name:cmd.exe AND (parent_name:iexplore.exe OR parent_name:firefox.exe OR parent_name:chrome.exe OR parent_name:acrord32.exe OR parent_name:java.exe OR parent_name:javaw.exe OR parent_name:*flash*)
+Any process that spawned a shell,events,Local File,50,childproc_name:powershell.exe OR childproc_name:cmd.exe
+Copying binary files via CMD,events,Local File,50,"cmdline:""copy /b"""
+Net use,events,Local File,50,"cmdline:""net use"""
+Registry key addition,events,Local File,50,"cmdline:""reg"" AND cmdline:""add"""
+Creating services,events,Local File,50,"cmdline:""sc create"""
+Adding local users,events,Local File,50,cmdline:net AND (cmdline:user OR cmdline:localgroup) AND cmdline:/add
+Unsigned binaries creating threads in other processes,events,Local File,50,"crossproc_type:""remotethread"" -digsig_result:Signed"
+Sysinternals (-bginfo),events,Local File,50,"digsig_prog_name:""Sysinternals Utilities"" -process_name:bginfo.exe"
+Microsoft signed binaries run from unusual paths,events,Local File,50,"digsig_publisher:""Microsoft Corporation"" AND -path:windows* AND -path:program\ files*"
+Unsigned binary spawning svchost.exe,events,Local File,50,"digsig_result:""Unsigned"" childproc_name:svchost.exe"
+Modification to startup folder,events,Local File,50,"filemod:""Start Menu\Programs\Startup"""
+filemod:\(null\)_Post AND filemod:Logs/* AND filemod:cr-silent/* AND modload:open,events,Local File,50,filemod:\(null\)_Post AND filemod:Logs/* AND filemod:cr-silent/* AND modload:open
+Unsigned files written to Outlook content folder,events,Local File,50,filemod:Content.Outlook\* and -digsig_result_filewrite:Signed
+Executable files written to Outlook content folder,events,Local File,50,filemod:Content.Outlook\* and is_executable_image_filewrite:True
+Modification of executables for accessibility options or sticky keys,events,Local File,50,filemod:windows/system32/sethc.exe OR filemod:windows/system32/utilman.exe
+> 500 file modifications,events,Local File,50,filemod_count:[500 TO *]
+IP traffic on port 3389,events,Local File,50,ipport:3389
+Web ports used by non-browsers,events,Local File,50,ipport:80 AND ipport:443 AND ipport:8080 AND -process_name:chrome.exe AND -process_name:iexplore.exe
+Internet Explorer compromise,events,Local File,50,modload:vgx.dll AND process_name:iexplore.exe AND modload:*.ocx AND childproc_name:*.dll
+Not signed binaries initiating connections to public IPs,events,Local File,50,netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows
+Unsigned binaries initiating connections to public IPs,events,Local File,50,netconn_count:[1 TO *] AND digsig_result:Unsigned AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255] OR ipaddr:[64.53.32.192 to 64.53.32.192])  AND os_type:windows
+Process spawned via Acrobat,events,Local File,50,parent_name:acrord32.exe
+Process spawned via browser,events,Local File,50,parent_name:chrome.exe OR parent_name:iexplore.exe OR parent_name:firefox.exe
+Process spawned via Java,events,Local File,50,parent_name:java.exe
+Process spawned via Javaw,events,Local File,50,parent_name:javaw.exe
+Process spawned via Outlook,events,Local File,50,parent_name:outlook.exe
+Process spawned via Services.exe with >1 network connection,events,Local File,50,parent_name:services.exe AND netconn_count:[1 TO *]
+Wininit started by something other than smss.exe,events,Local File,50,-parent_name:smss.exe AND parent_name:* AND process_name:wininit.exe
+Unsigned binaries started by taskeng.exe that have network communications with public IP space,events,Local File,50,parent_name:taskeng.exe AND netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *] 
+Taskeng.exe starting at.exe or schtasks.exe,events,Local File,50,parent_name:taskeng.exe OR process_name:at.exe OR process_name:schtasks.exe
+Process spawned via Word,events,Local File,50,parent_name:winword.exe
+"Process spawned via Word, Excel, PowerPoint, or Acrobat Reader",events,Local File,50,parent_name:winword.exe OR parent_name:excel.exe OR parent_name:powerpnt.exe OR parent_name:AcroRd32.exe
+Unsigned binaries executed from drives other than C or D,events,Local File,50,-path:C* and -path:D* AND -digsig_result:'Signed'
+Execution from RECYCLER,events,Local File,50,path:RECYCLER/*.exe
+Execution from System Volume Information,events,Local File,50,path:System\ Volume\ Information*
+Execution from Windows/IME,events,Local File,50,path:Windows/IME/*.exe
+Enumeration of user sessions,events,Local File,50,path:windows/system32/quser.exe
+Suspicious filename (extension hiding),events,Local File,50,process_name:*.txt.exe OR process_name:*.pdf.exe OR process_name:*.rtf.exe OR process_name:*.jpg.exe OR process_name:*.xml.exe OR process_name:*.gif.exe OR process_name:*.htm.exe OR process_name:*.html.exe OR process_name:*.zip.exe
+Scheduled task execution,events,Local File,50,process_name:at.exe OR process_name:schtask.exe
+CMD shell spawned by Excel,events,Local File,50,process_name:cmd.exe parent_name:excel.exe
+Typical troubleshooting / enumeration tools,events,Local File,50,process_name:enum.exe OR process_name:sc.exe OR process_name:netsh.exe OR process_name:arp.exe OR process_name:nmap.exe OR process_name:tasklist.exe OR process_name:tracert.exe OR process_name:ping.exe OR process_name:netstat.exe
+Regedit spawned by process other than explorer,events,Local File,50,(-process_name:explorer.exe AND (childproc_name:regedit.exe OR childproc_name:regedt32.exe))
+FTP usage,events,Local File,50,process_name:ftp.exe
+Internet Explorer run by SYSTEM,events,Local File,50,process_name:iexplore.exe username:system
+Suspicious filename (misspelled system files),events,Local File,50,process_name:isass.exe OR process_name:svch0st.exe OR process_name:svchost.dll OR process_name:lexplore.exe OR process_name:lexplorer.exe OR process_name:svchosts.exe OR process_name:csrsr.exe
+RDP sessions to external IP space,events,Local File,50,process_name:mstsc.exe AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255]) AND -ipaddr:[64.53.32.0 to 64.53.32.254])
+Net.exe started by process other than gpshell.exe,events,Local File,50,process_name:net.exe -parent_name:gpshell.exe
+Notepad spawning child process,events,Local File,50,process_name:notepad.exe AND childproc_name:*.exe
+Powershell spawning dllhost.exe,events,Local File,50,process_name:powershell.exe AND childproc_name:dllhost.exe
+Powershell Bypass,events,Local File,50,process_name:powershell.exe and cmdline:bypass
+Powershell Encoded Command,events,Local File,50,process_name:powershell.exe and cmdline:-encodedcommand
+Powershell IEX,events,Local File,50,process_name:powershell.exe AND cmdline:iex
+Powershell started by rundll32.exe,events,Local File,50,process_name:powershell.exe AND parent_name:rundll32.exe
+Powershell Download,events,Local File,50,process_name:powershell.exe cmdline:net.webclient\).downloadstring\(http:
+Powershell started by process other than explorer or gpscript,events,Local File,50,process_name:powershell.exe -parent_name:explorer.exe -parent_name:gpscript.exe
+RAR usage,events,Local File,50,process_name:rar.exe
+Robocopy usage,events,Local File,50,process_name:robocopy.exe
+Runas usage,events,Local File,50,process_name:runas.exe OR cmdline:runas
+Rundll32 usage,events,Local File,50,process_name:rundll32.exe
+Rundll32 used to run html,events,Local File,50,"process_name:rundll32.exe AND cmdline:”mshtml,runhtmlapplication”"
+Rundll32 used to run javascript,events,Local File,50,"process_name:rundll32.exe cmdline:""javascript:\"""""
+Smss started by suspicious process,events,Local File,50,process_name:smss.exe AND parent_name:* AND -parent_name:smss.exe AND -parent_name:ntkrnlpa.exe AND -parent_name:ntoskrnl.exe
+Svchost with unusual username,events,Local File,50,"process_name:svchost.exe (-username:SYSTEM OR -username:""NETWORK SERVICE"" OR -username:""LOCAL SERVICE"")"
+WMIC usage,events,Local File,50,process_name:wmic.exe
+Wscript usage,events,Local File,50,process_name:wscript.exe
+Registry modification to context menu,events,Local File,50,"regmod:""software\classes\*"" AND regmod:""shellex\contextmenuhandlers"""
+Startup Registry Modification (Run),events,Local File,50,"regmod:""software\microsoft\windows\currentversion\run"""
+Startup Registry Modification (RunOnce),events,Local File,50,"regmod:""software\microsoft\windows\currentversion\runonce"""
+Registry modification to Hidden entry by process other than explorer,events,Local File,50,regmod:\registry\user\*\software\microsoft\windows\CurrentVersion\Explorer\Advanced\Hidden And -process_name:explorer.exe
+Registry modification to UILanguages,events,Local File,50,regmod:control\MUI\UILanguages\*
+Startup Registry Modification (Run*),events,Local File,50,regmod:CurrentVersion\Run*
+Windows Credential Editor usage,events,Local File,50,process_name:wce.exe
+Powershell creating remote threads,events,Local File,50,"crossproc_type:""remotethread"" process_name:powershell.exe"
