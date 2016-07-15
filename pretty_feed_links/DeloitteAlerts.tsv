@@ -1,18 +1,36 @@
-title	index_type	link	score	query
-Usage - Sc.exe - Any except w32time	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	60	"process_name:sc.exe (-cmdline:""C:\Windows\system32\sc.exe start wuauserv"" OR -cmdline:""C:\Windows\system32\sc.exe start w32time task_started"") -alliance_score_deloitteexceptions:[1 TO *]"
-Svchost - Suspicious Parent Process	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	60	childproc_name:svchost.exe -process_name:svchost.exe -process_name:services.exe  -alliance_score_deloitteexceptions:[1 TO *] 
-Network Connections to Non-private networks - Unsigned binaries	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	70	netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *] 
-Usage - cmd.exe - Non-std path	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	95	"file_desc:""windows command processor"" AND -path:windows\system32\cmd.exe AND -path:windows\syswow64\cmd.exe -alliance_score_deloitteexceptions:[1 TO *] "
-Execution - Cmd.exe - unusual parent	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	60	childproc_name:cmd.exe AND (parent_name:iexplore.exe OR parent_name:firefox.exe OR parent_name:chrome.exe OR parent_name:acrord32.exe OR parent_name:java.exe OR parent_name:javaw.exe OR parent_name:*flash*) -alliance_score_deloitteexceptions:[1 TO *] 
-Execution - Cmd.exe - Vulnerable app launching	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	80	alliance_score_nvd:[1 TO *] childproc_name:cmd.exe -alliance_score_deloitteexceptions:[1 TO *] 
-Execution - Recycle bin	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	90	path:RECYCLER\* OR path:*recycle.bin* -alliance_score_deloitteexceptions:[1 TO *] 
-Execution - Svchost running under an unusual user context	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	90	"process_name:svchost.exe AND (-username:SYSTEM OR -username:""NETWORK SERVICE"" OR -username:""LOCAL SERVICE"") -alliance_score_deloitteexceptions:[1 TO *] "
-Zeus Dropper - Svchost from unsigned parent	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	100	digsig_result:Unsigned childproc_name:svchost.exe AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *] 
-Usage - net.exe - Administrator	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	70	process_name:net.exe -username:administrator -alliance_score_deloitteexceptions:[1 TO *] 
-Usage - at.exe - Any	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	70	process_name:at.exe -alliance_score_deloitteexceptions:[1 TO *] 
-Execution - Adobe launching unsigned binary	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	60	"parent_name:acrord32.exe -digsig_publisher:""Adobe Systems, Incorporated"" AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *]"
-Usage - non-gui registry editor reg.exe - Any	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	70	process_name:reg.exe -alliance_score_deloitteexceptions:[1 TO *] 
-Usage - Windows Credential Editor - Any	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	70	modload:wceaux.dll -alliance_score_deloitteexceptions:[1 TO *] 
-Usage - regedit - Any	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	60	-process_name:explorer.exe  AND (childproc_name:regedit.exe OR childproc_name:regedt32.exe) -alliance_score_deloitteexceptions:[1 TO *] 
-Shim Installer not from trustedinstaller.exe	events	https://github.com/boingomw/Lazerbearsharkpig/blob/master/raw_parts/dalerts.csv	90	process_name:sdbinst.exe -parent_name:trustedinstaller.exe -alliance_score_deloitteexceptions:[1 TO *] 
-Locky Ransomware	events	https://community.bit9.com/docs/DOC-4003#comment-3493	95	"regmod:""\Software\Locky"" OR (childproc_name:notepad.exe and childproc_name:vssadmin.exe) OR cmdline:_Locky_recover_instructions.txt OR (process_name:cmd.exe parent_name:winword.exe childproc_name:cscript.exe)"
+title	index_type	link	score	query
+
+Usage - Sc.exe - Any except w32time	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	60	"process_name:sc.exe (-cmdline:""C:\Windows\system32\sc.exe start wuauserv"" OR -cmdline:""C:\Windows\system32\sc.exe start w32time task_started"") -alliance_score_deloitteexceptions:[1 TO *]"
+
+Svchost - Suspicious Parent Process	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	60	childproc_name:svchost.exe -process_name:svchost.exe -process_name:services.exe  -alliance_score_deloitteexceptions:[1 TO *] 
+
+Network Connections to Non-private networks - Unsigned binaries	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	70	netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *] 
+
+Usage - cmd.exe - Non-std path	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	95	"file_desc:""windows command processor"" AND -path:windows\system32\cmd.exe AND -path:windows\syswow64\cmd.exe -alliance_score_deloitteexceptions:[1 TO *] "
+
+Execution - Cmd.exe - unusual parent	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	60	childproc_name:cmd.exe AND (parent_name:iexplore.exe OR parent_name:firefox.exe OR parent_name:chrome.exe OR parent_name:acrord32.exe OR parent_name:java.exe OR parent_name:javaw.exe OR parent_name:*flash*) -alliance_score_deloitteexceptions:[1 TO *] 
+
+Execution - Cmd.exe - Vulnerable app launching	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	80	alliance_score_nvd:[1 TO *] childproc_name:cmd.exe -alliance_score_deloitteexceptions:[1 TO *] 
+
+Execution - Recycle bin	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	90	path:RECYCLER\* OR path:*recycle.bin* -alliance_score_deloitteexceptions:[1 TO *] 
+
+Execution - Svchost running under an unusual user context	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	90	"process_name:svchost.exe AND (-username:SYSTEM OR -username:""NETWORK SERVICE"" OR -username:""LOCAL SERVICE"") -alliance_score_deloitteexceptions:[1 TO *] "
+
+Zeus Dropper - Svchost from unsigned parent	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	100	digsig_result:Unsigned childproc_name:svchost.exe AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *] 
+
+Usage - net.exe - Administrator	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	70	process_name:net.exe -username:administrator -alliance_score_deloitteexceptions:[1 TO *] 
+
+Usage - at.exe - Any	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	70	process_name:at.exe -alliance_score_deloitteexceptions:[1 TO *] 
+
+Execution - Adobe launching unsigned binary	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	60	"parent_name:acrord32.exe -digsig_publisher:""Adobe Systems, Incorporated"" AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *]"
+
+Usage - non-gui registry editor reg.exe - Any	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	70	process_name:reg.exe -alliance_score_deloitteexceptions:[1 TO *] 
+
+Usage - Windows Credential Editor - Any	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	70	modload:wceaux.dll -alliance_score_deloitteexceptions:[1 TO *] 
+
+Usage - regedit - Any	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	60	-process_name:explorer.exe  AND (childproc_name:regedit.exe OR childproc_name:regedt32.exe) -alliance_score_deloitteexceptions:[1 TO *] 
+
+Shim Installer not from trustedinstaller.exe	events	https://github.com/elvigilantesoc/cbhunting/blob/master/raw_parts/dalerts.csv	90	process_name:sdbinst.exe -parent_name:trustedinstaller.exe -alliance_score_deloitteexceptions:[1 TO *] 
+
+Locky Ransomware	events	https://community.bit9.com/docs/DOC-4003#comment-3493	95	"regmod:""\Software\Locky"" OR (childproc_name:notepad.exe and childproc_name:vssadmin.exe) OR cmdline:_Locky_recover_instructions.txt OR (process_name:cmd.exe parent_name:winword.exe childproc_name:cscript.exe)"
+
