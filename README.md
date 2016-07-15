@@ -1,4 +1,4 @@
-# Lazerbearsharkpig
+# CB HUNTING
 Test repository.  For testing.
 
 To use the feed creation stuff, you also need https://github.com/carbonblack/cbfeeds installed, and you need a link to it in the buildcode directory.  i.e. ln -s ~/cbfeeds/cbfeeds/ .
@@ -12,7 +12,7 @@ buildcode -  Scripts, API, etc needed to make the feeds
 --clearfeeds.sh - Eventually, when you test intel feeds, you end up with crap in the DB.  This will clear that crap.  However, it has to run on the CB server itself.  I don't use a cloud server.  Looking at it will show you the basic process to use for your own feeds, when they fill up your database with (no joke) 23 duplicates of the same thing.
 
 feeds - These are the feeds themselves.  Add them to Carbon Black under "Intelligence Feeds" by direct url to the RAW github link.
-				ie https://raw.githubusercontent.com/boingomw/Lazerbearsharkpig/master/feeds/DeloitteAlerts
+				ie https://raw.githubusercontent.com/elvigilantesoc/cbhunting/master/feeds/DeloitteAlerts
 
 forager-feeds - Testing I'm doing with making the forager data one big feed
 
