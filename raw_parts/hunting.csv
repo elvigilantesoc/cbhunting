@@ -65,7 +65,7 @@ RAR usage,events,Local File,50,process_name:rar.exe
 Robocopy usage,events,Local File,50,process_name:robocopy.exe
 Runas usage,events,Local File,50,process_name:runas.exe OR cmdline:runas
 Rundll32 usage,events,Local File,50,process_name:rundll32.exe
-Rundll32 used to run html,events,Local File,50,"process_name:rundll32.exe AND cmdline:”mshtml,runhtmlapplication”"
+Rundll32 used to run html,events,Local File,50,"process_name:rundll32.exe AND cmdline:Â”mshtml,runhtmlapplicationÂ”"
 Rundll32 used to run javascript,events,Local File,50,"process_name:rundll32.exe cmdline:""javascript:\"""""
 Smss started by suspicious process,events,Local File,50,process_name:smss.exe AND parent_name:* AND -parent_name:smss.exe AND -parent_name:ntkrnlpa.exe AND -parent_name:ntoskrnl.exe
 Svchost with unusual username,events,Local File,50,"process_name:svchost.exe (-username:SYSTEM OR -username:""NETWORK SERVICE"" OR -username:""LOCAL SERVICE"")"
@@ -79,3 +79,4 @@ Registry modification to UILanguages,events,Local File,50,regmod:control\MUI\UIL
 Startup Registry Modification (Run*),events,Local File,50,regmod:CurrentVersion\Run*
 Windows Credential Editor usage,events,Local File,50,process_name:wce.exe
 Powershell creating remote threads,events,Local File,50,"crossproc_type:""remotethread"" process_name:powershell.exe"
+CRSS.EXE,events,Local File,50,process_name:csrss.exe
