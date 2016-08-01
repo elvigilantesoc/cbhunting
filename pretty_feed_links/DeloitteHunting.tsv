@@ -1,163 +1,162 @@
-title	index_type	link	score	query
-
-Execution from AppData folder	events	Local File	50	(path:appdata\* or path:Application Data\*)
-
-Shells run by SYSTEM	events	Local File	50	(process_name:powershell.exe OR process_name:cmd.exe) username:system
-
-Remote execution utilities e.g. PSExec	events	Local File	50	(process_name:psexec.exe OR process_name:rexec.exe OR process_name:rcmd.exe or process_name:xcmd.exe)
-
-Firewall Modificiations	events	Local File	50	(regmod:\registry\machine\SYSTEM\*\services\SharedAccess\*\FirewallPolicy\*\EnableFirewall AND -process_name:svchost.exe) OR (cmdline:netsh AND cmdline:advfirewall)
-
-Vulnerable software that spawned a shell	events	Local File	50	alliance_score_nvd:* AND (childproc_name:powershell.exe OR childproc_name:cmd.exe)
-
-Processes that have VT score > 10, and more than 1 network connection	events	Local File	50	alliance_score_virustotal:[10 TO *] AND netconn_count:[1 TO *]
-
-Command prompt started by commonly compromised programs (browsers, Acrobat, Java, etc.) 	events	Local File	50	childproc_name:cmd.exe AND (parent_name:iexplore.exe OR parent_name:firefox.exe OR parent_name:chrome.exe OR parent_name:acrord32.exe OR parent_name:java.exe OR parent_name:javaw.exe OR parent_name:*flash*)
-
-Any process that spawned a shell	events	Local File	50	childproc_name:powershell.exe OR childproc_name:cmd.exe
-
-Copying binary files via CMD	events	Local File	50	"cmdline:""copy /b"""
-
-Net use	events	Local File	50	"cmdline:""net use"""
-
-Registry key addition	events	Local File	50	"cmdline:""reg"" AND cmdline:""add"""
-
-Creating services	events	Local File	50	"cmdline:""sc create"""
-
-Adding local users	events	Local File	50	cmdline:net AND (cmdline:user OR cmdline:localgroup) AND cmdline:/add
-
-Unsigned binaries creating threads in other processes	events	Local File	50	"crossproc_type:""remotethread"" -digsig_result:Signed"
-
-Sysinternals (-bginfo)	events	Local File	50	"digsig_prog_name:""Sysinternals Utilities"" -process_name:bginfo.exe"
-
-Microsoft signed binaries run from unusual paths	events	Local File	50	"digsig_publisher:""Microsoft Corporation"" AND -path:windows* AND -path:program\ files*"
-
-Unsigned binary spawning svchost.exe	events	Local File	50	"digsig_result:""Unsigned"" childproc_name:svchost.exe"
-
-Modification to startup folder	events	Local File	50	"filemod:""Start Menu\Programs\Startup"""
-
-filemod:\(null\)_Post AND filemod:Logs/* AND filemod:cr-silent/* AND modload:open	events	Local File	50	filemod:\(null\)_Post AND filemod:Logs/* AND filemod:cr-silent/* AND modload:open
-
-Unsigned files written to Outlook content folder	events	Local File	50	filemod:Content.Outlook\* and -digsig_result_filewrite:Signed
-
-Executable files written to Outlook content folder	events	Local File	50	filemod:Content.Outlook\* and is_executable_image_filewrite:True
-
-Modification of executables for accessibility options or sticky keys	events	Local File	50	filemod:windows/system32/sethc.exe OR filemod:windows/system32/utilman.exe
-
-> 500 file modifications	events	Local File	50	filemod_count:[500 TO *]
-
-IP traffic on port 3389	events	Local File	50	ipport:3389
-
-Web ports used by non-browsers	events	Local File	50	ipport:80 AND ipport:443 AND ipport:8080 AND -process_name:chrome.exe AND -process_name:iexplore.exe
-
-Internet Explorer compromise	events	Local File	50	modload:vgx.dll AND process_name:iexplore.exe AND modload:*.ocx AND childproc_name:*.dll
-
-Not signed binaries initiating connections to public IPs	events	Local File	50	netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows
-
-Unsigned binaries initiating connections to public IPs	events	Local File	50	netconn_count:[1 TO *] AND digsig_result:Unsigned AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255] OR ipaddr:[64.53.32.192 to 64.53.32.192])  AND os_type:windows
-
-Process spawned via Acrobat	events	Local File	50	parent_name:acrord32.exe
-
-Process spawned via browser	events	Local File	50	parent_name:chrome.exe OR parent_name:iexplore.exe OR parent_name:firefox.exe
-
-Process spawned via Java	events	Local File	50	parent_name:java.exe
-
-Process spawned via Javaw	events	Local File	50	parent_name:javaw.exe
-
-Process spawned via Outlook	events	Local File	50	parent_name:outlook.exe
-
-Process spawned via Services.exe with >1 network connection	events	Local File	50	parent_name:services.exe AND netconn_count:[1 TO *]
-
-Wininit started by something other than smss.exe	events	Local File	50	-parent_name:smss.exe AND parent_name:* AND process_name:wininit.exe
-
-Unsigned binaries started by taskeng.exe that have network communications with public IP space	events	Local File	50	parent_name:taskeng.exe AND netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *] 
-
-Taskeng.exe starting at.exe or schtasks.exe	events	Local File	50	parent_name:taskeng.exe OR process_name:at.exe OR process_name:schtasks.exe
-
-Process spawned via Word	events	Local File	50	parent_name:winword.exe
-
-Process spawned via Word, Excel, PowerPoint, or Acrobat Reader	events	Local File	50	parent_name:winword.exe OR parent_name:excel.exe OR parent_name:powerpnt.exe OR parent_name:AcroRd32.exe
-
-Unsigned binaries executed from drives other than C or D	events	Local File	50	-path:C* and -path:D* AND -digsig_result:'Signed'
-
-Execution from RECYCLER	events	Local File	50	path:RECYCLER/*.exe
-
-Execution from System Volume Information	events	Local File	50	path:System\ Volume\ Information*
-
-Execution from Windows/IME	events	Local File	50	path:Windows/IME/*.exe
-
-Enumeration of user sessions	events	Local File	50	path:windows/system32/quser.exe
-
-Suspicious filename (extension hiding)	events	Local File	50	process_name:*.txt.exe OR process_name:*.pdf.exe OR process_name:*.rtf.exe OR process_name:*.jpg.exe OR process_name:*.xml.exe OR process_name:*.gif.exe OR process_name:*.htm.exe OR process_name:*.html.exe OR process_name:*.zip.exe
-
-Scheduled task execution	events	Local File	50	process_name:at.exe OR process_name:schtask.exe
-
-CMD shell spawned by Excel	events	Local File	50	process_name:cmd.exe parent_name:excel.exe
-
-Typical troubleshooting / enumeration tools	events	Local File	50	process_name:enum.exe OR process_name:sc.exe OR process_name:netsh.exe OR process_name:arp.exe OR process_name:nmap.exe OR process_name:tasklist.exe OR process_name:tracert.exe OR process_name:ping.exe OR process_name:netstat.exe
-
-Regedit spawned by process other than explorer	events	Local File	50	(-process_name:explorer.exe AND (childproc_name:regedit.exe OR childproc_name:regedt32.exe))
-
-FTP usage	events	Local File	50	process_name:ftp.exe
-
-Internet Explorer run by SYSTEM	events	Local File	50	process_name:iexplore.exe username:system
-
-Suspicious filename (misspelled system files)	events	Local File	50	process_name:isass.exe OR process_name:svch0st.exe OR process_name:svchost.dll OR process_name:lexplore.exe OR process_name:lexplorer.exe OR process_name:svchosts.exe OR process_name:csrsr.exe
-
-RDP sessions to external IP space	events	Local File	50	process_name:mstsc.exe AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255]) AND -ipaddr:[64.53.32.0 to 64.53.32.254])
-
-Net.exe started by process other than gpshell.exe	events	Local File	50	process_name:net.exe -parent_name:gpshell.exe
-
-Notepad spawning child process	events	Local File	50	process_name:notepad.exe AND childproc_name:*.exe
-
-Powershell spawning dllhost.exe	events	Local File	50	process_name:powershell.exe AND childproc_name:dllhost.exe
-
-Powershell Bypass	events	Local File	50	process_name:powershell.exe and cmdline:bypass
-
-Powershell Encoded Command	events	Local File	50	process_name:powershell.exe and cmdline:-encodedcommand
-
-Powershell IEX	events	Local File	50	process_name:powershell.exe AND cmdline:iex
-
-Powershell started by rundll32.exe	events	Local File	50	process_name:powershell.exe AND parent_name:rundll32.exe
-
-Powershell Download	events	Local File	50	process_name:powershell.exe cmdline:net.webclient\).downloadstring\(http:
-
-Powershell started by process other than explorer or gpscript	events	Local File	50	process_name:powershell.exe -parent_name:explorer.exe -parent_name:gpscript.exe
-
-RAR usage	events	Local File	50	process_name:rar.exe
-
-Robocopy usage	events	Local File	50	process_name:robocopy.exe
-
-Runas usage	events	Local File	50	process_name:runas.exe OR cmdline:runas
-
-Rundll32 usage	events	Local File	50	process_name:rundll32.exe
-
-Rundll32 used to run html	events	Local File	50	process_name:rundll32.exe AND cmdline:Â”mshtml,runhtmlapplicationÂ”
-
-Rundll32 used to run javascript	events	Local File	50	"process_name:rundll32.exe cmdline:""javascript:\"""""
-
-Smss started by suspicious process	events	Local File	50	process_name:smss.exe AND parent_name:* AND -parent_name:smss.exe AND -parent_name:ntkrnlpa.exe AND -parent_name:ntoskrnl.exe
-
-Svchost with unusual username	events	Local File	50	"process_name:svchost.exe (-username:SYSTEM OR -username:""NETWORK SERVICE"" OR -username:""LOCAL SERVICE"")"
-
-WMIC usage	events	Local File	50	process_name:wmic.exe
-
-Wscript usage	events	Local File	50	process_name:wscript.exe
-
-Registry modification to context menu	events	Local File	50	"regmod:""software\classes\*"" AND regmod:""shellex\contextmenuhandlers"""
-
-Startup Registry Modification (Run)	events	Local File	50	"regmod:""software\microsoft\windows\currentversion\run"""
-
-Startup Registry Modification (RunOnce)	events	Local File	50	"regmod:""software\microsoft\windows\currentversion\runonce"""
-
-Registry modification to Hidden entry by process other than explorer	events	Local File	50	regmod:\registry\user\*\software\microsoft\windows\CurrentVersion\Explorer\Advanced\Hidden And -process_name:explorer.exe
-
-Registry modification to UILanguages	events	Local File	50	regmod:control\MUI\UILanguages\*
-
-Startup Registry Modification (Run*)	events	Local File	50	regmod:CurrentVersion\Run*
-
-Windows Credential Editor usage	events	Local File	50	process_name:wce.exe
-
-Powershell creating remote threads	events	Local File	50	"crossproc_type:""remotethread"" process_name:powershell.exe"
-
-CRSS.EXE events Local File 50 process_name:csrss.exe
+title	index_type	link	score	Goal	query	Source	Deployment Date	Kill Chain Phase	Comments	Date of Post (for queries from Carbon Black online posts)
+MS Office processes that spawns a process to executes a script via cscript.exe	events	Local File	80		" ( parent_name:winword.exe OR parent_name:excel.exe OR parent_name:powerpoint.exe ) AND (process_name:cmd.exe AND childproc_name:cscript.exe AND os_type:""windows"" )"	Carbon Black Detection Exchange		1-3 (Recon Weapon Delivery)	 https://community.carbonblack.com/docs/DOC-3849	1/21/2016
+New IPs associated with Nuclear Exploit Kit, detected 2-4-16	events	Local File	80	Nuclear Exploit Kit	 (ipaddr:[-1534832569 TO -1534832569]) OR (ipaddr:[-1561113130 TO -1561113130]) OR (ipaddr:[-1614079960 TO -1614079960])	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-3928	2/5/2016
+alerts on a number of child processes that could indicate malicious activity.	events	Local File	85		 (parent_name:wscript.exe (process_name:cmd.exe OR process_name:net.exe OR process_name:powershell.exe or process_name:wmic.exe))	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+ Advanced attackers recon/lateral movement	events	Local File	80	Lateral Movement	" (process_name:net.exe OR (process_name:net1.exe AND -parent_name:net.exe) OR process_name:dsquery.exe) and cmdline:""\""domain admins\"""""	Carbon Black Detection Exchange		6 (C2C)	  If you have AD, then any intrusion will almost certainly include getting a list of domain admins as the attackers work their way to dumping your DC. https://community.carbonblack.com/docs/DOC-3885	1/28/2016
+" Looks for procdump.exe or procdump64.exe being invoked with lsass.exe in the command line, or performing a cross-process event on lsass.exe
+"	events	Local File	90	"The sysinternals tool ""procdump"" can be used to dump the memory space of lsass.exe, which can then be used by a tool like mimikatz harvest credentials. procdump is typically not flagged by A/V or whitelisting since it is a ""known good"" administrative tool."	 (process_name:procdump.exe OR process_name:procdump64.exe) AND (cmdline:lsass.exe OR crossproc_name:lsass.exe)	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-3915	2/4/2016
+watches for a known behavior of the CryptXXX ransomware, which is to make a copy of rundll32.exe and rename it to svchost.exe	events	Local File	90		 (process_name:svchost.exe OR process_name:explorer.exe) internal_name:rundll	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4585	5/17/2016
+watchlist looks for when vssadmin.exe is run along with delete shadows (and from what I've seen is a strong indicator that ransomware is executing on an endpoint)	events	Local File	98		 C:\Windows\System32\vssadmin.exe Delete Shadows 	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-4268	4/1/2016
+Initial write of an unsigned binary to \Windows\System32	events	Local File	0		" filemod:windows\system32\*˜digsig_result:unsigned˜digsig_result_filewrite:""Unsigned"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3019	4/1/2016
+Detect Tor file or process	events	Local File	100		 process_name:tor.exe OR filemod:tor.exe OR filemod:torrc	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-3952	2/8/2016
+ wscript.exe .js execution that downloads an .exe after a network connection.	events	Local File	70	One (of many) vectors for *locker delivery.  User downloads email with zipped .js file, executes .js and locker is downloaded/executed	" process_name:wscript.exe and is_executable_image_filewrite:""true"" and netconn_count:[1 to *]"	Carbon Black Detection Exchange		1-3 (Recon Weapon Delivery)	 https://community.carbonblack.com/docs/DOC-4069	3/4/2016
+Registry entry pattern	events	Local File	0		 regmod:services\national* digsig_result:unsigned	Carbon Black Threat Intel Group			https://community.carbonblack.com/docs/DOC-4329	4/11/2016
+Registry entry pattern (svchost)	events	Local File	0		 regmod:services\svchostc* digsig_result:unsigned	Carbon Black Threat Intel Group			https://community.carbonblack.com/docs/DOC-4329	4/11/2016
+looks for specific suspicious command line PowerShell commands commonly used in PowerShell attacks	events	Local File	50	Malicious Powershell Usage	"( cmdline:bypass OR cmdline:-encodedcommand OR cmdline:-enc ) AND process_name:powershell.exe AND os_type:""windows"""	Carbon Black Detection Exchange	7/172016	1-3 (Recon Weapon Delivery)	 https://community.carbonblack.com/docs/DOC-3868	1/27/2016
+Uses PowerShell and its capabilities to deploy exploits and payloads to gain persistence, move laterally, and escalate privileges	events	Local File	100	Establish Persistence/Privilege Escalation	((cmdline:-encodedcommand OR cmdline:-enc) AND cmdline:hidden))	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-3840#comment-3282	1/26/2016
+modications to the WinSXS directory by unsigned processes	events	Local File	80		"((filemod:sxs/* or filemod:winsxs/*) -digsig_result:signed) os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+Word or Excel loading DLLs used by VBA macros	events	Local File	80		"((process_name:winword.exe OR process_name:excel.exe) (modload:""\program files\common files\microsoft shared\vba\vba7\vbe7.dll"" OR modload:""\program files\common files\microsoft shared\vba\vba7\1033\vbe7intl.dll"" OR modload:""\Program Files\Common Files\Microsoft Shared\Vba\Vba6\vbe6.dll"" OR modload:""\program files\common files\microsoft shared\vba\vba6\1033\vbe6intl.dll"")) os_type:""windows"""	Carbon Black Threat Intel Group	5/30/2016	1-3 (Recon Weapon Delivery)	 https://community.carbonblack.com/thread/3493	7/20/2016
+spawn both notepad.exe and msdcsc.exe child processes as part of DarkComet RAT initial process.	events	Local File	90		"(childproc_name:notepad.exe childproc_name:msdcsc.exe) os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+scheduled tasks created by an unsigned, uncommon process.	events	Local File	80		"(childproc_name:schtasks.exe -digsig_result:Signed -process_name:wsqmcons.exe -process_name:taskeng.exe) os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+By gathering information about a compromised system, attackers can plan out further stages of their attack	events	Local File	85		"(childproc_name:systeminfo.exe (childproc_name:net.exe OR childproc_name:nbstat.exe OR childproc_name:ipconfig.exe))  os_type:""windows"""	Carbon Black Threat Intel Group			 This behavior has been observed in legitimate applications such as Cisco's AnyConnect VPN suite https://community.carbonblack.com/thread/3493	7/20/2016
+ looks for account creation using net.exe as well as addition of accounts to local users/administrators group	events	Local File	50	Privilege Escalation	"(cmdline:""net user"" OR cmdline:""net localgroup users"" OR cmdline:""net localgroup administrators"") AND cmdline:add"	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-3866#comment-3329	1/28/2016
+unsigned process modifying a file in the windows/tasks/ directory	events	Local File	80	Attackers may schedule a task in order to maintain persistence.	"(filemod:windows\tasks* -digsig_result:signed) os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+cmd.exe was spawned which echoed javascript and then used wscript to download the .tmp.dll (for CryptXXX)	events	Local File	95		(parent_name:iexplore.exe or parent_name:firefox.exe or parent_name:chrome.exe) (process_name:cmd.exe or process_name:wscript.exe or process_name:cscript.exe) (childproc_name:wscript.exe or childproc_name:cscript.exe)	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4585#comment-4483	6/10/2016
+Execution from AppData folder	events	Local File	50	Destruction	(path:appdata\* or path:Application Data\*)	Carbon Black Advanced Analyst Course		7 (Actions & Objectives)	 CryptoLocker	
+process that is setting both the system and hidden attributes on a file (this behavior would be associated with DarkComet RAT)	events	Local File	90		"(process_name:attrib.exe AND cmdline:""+s +h"") os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+File deletion with Ping	events	Local File	100		"(process_name:cmd.exe cmdline:del (cmdline:ping.exe OR cmdline:ping OR childproc_name:ping.exe)) os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+Compilers executing on non-developer workstations	events	Local File	0	Obfuscation/Polymorphism	(process_name:javac.exe OR process_name:gcc*) AND (filemod:appdata OR filemod:temp OR filemod:windows OR filemod:uses) -group:Developers	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 	
+WMI Launching MSHTA Launching Powershell	events	Local File	95		"(process_name:mshta.exe childproc_name:powershell.exe parent_name:wmiprsve.exe) os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+Shells run by SYSTEM	events	Local File	50	Malicious Code Downloads & Execution from Browsers & Exploited Applications	(process_name:powershell.exe OR process_name:cmd.exe) username:system	Carbon Black Advanced Analyst Course	7/17/2016	1-3 (Recon Weapon Delivery)	 Could potentially be 4-5 (Exploit Install); Running as SYSTEM entails privilege escalation	
+The are multiple cases when PowerShell is executed with system privileges. So an actor can perform malicious activity under system privileges which can further be used to leverage other kinds of attacks	events	Local File	60		(process_name:powershell.exe or process_name:powershell_ise.exe) AND (cmdline:-noninteractive OR cmdline:-executionpolicy OR cmdline:hidden OR cmdline:writerun OR cmdline:bypass OR cmdline:-noni) -cmdline:exchange -cmdline:DNS -cmdline:DHCP -cmdline:xml -parent_name:vulscan.exe	Carbon Black Detection Exchange	7/17/2016		 https://community.carbonblack.com/docs/DOC-4555	5/10/2016
+Remote execution utilities e.g. PSExec	events	Local File	50	Lateral Movement	(process_name:psexec.exe OR process_name:rexec.exe OR process_name:rcmd.exe or process_name:xcmd.exe)	Carbon Black Advanced Analyst Course	7/26/2016	6 (C2C)	 PSExec & variants	
+MS Office processes that write an executable file(s) to disk	events	Local File	80		"(process_name:winword.exe OR process_name:excel.exe OR process_name:powerpnt.exe) AND is_executable_image_filewrite:""true""  AND os_type:""windows"""	Carbon Black Detection Exchange		1-3 (Recon Weapon Delivery)	 https://community.carbonblack.com/docs/DOC-3844	1/21/2016
+processes that use wmi to gather information about a system.	events	Local File	85		"(process_name:wmic.exe cmdline:get (cmdline:csproduct OR cmdline:win32_bios or cmdline:bios OR cmdline:AntiVirusProduct) (cmdline:serialnumber OR cmdline:uuid OR cmdline:version OR cmdline:displayname)) os_type:""windows"""	Carbon Black Threat Intel Group			 https://community.carbonblack.com/thread/3493	7/20/2016
+Firewall Modificiations	events	Local File	50	Establish Persistence	(regmod:\registry\machine\SYSTEM\*\services\SharedAccess\*\FirewallPolicy\*\EnableFirewall AND -process_name:svchost.exe) OR (cmdline:netsh AND cmdline:advfirewall)	Carbon Black Advanced Analyst Course	7/26/2016	4-5 (Exploit Install)	 Service creation: cmdline:	
+ identifies Ramnit by looking for the ways it creates persistence on a system as well as how it modifies system security settings	events	Local File	100	Establish Persistence	"(regmod:software\microsoft\windows\currentversion\run\* OR regmod:""software\microsoft\windows nt\currentversion\winlogon\userinit"") AND (regmod:""software\microsoft\security center\uacdisablenotify"" OR regmod:""software\microsoft\security center\updatesdisablenotify"" OR regmod:""software\microsoft\security center\firewalldisablenotiy"" OR regmod:""software\microsoft\security center\firewalloverride"" OR regmod:""software\microsoft\security center\antivirusdisablenotify"" OR regmod:""software\microsoft\security center\antivirusoverride"")"	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4613	 5/23/2016
+Vulnerable exploitable application spawneding a shell command	events	Local File	50	Malicious Code Downloads & Execution from Browsers & Exploited Applications	alliance_score_nvd:* AND (childproc_name:powershell.exe OR childproc_name:cmd.exe)	Deloitte IR/CB Pro Services		1-3 (Recon Weapon Delivery)	 	
+Child Processes of exploitable Browsers & Plugins (Java/Flash)	events	Local File	0	Malicious Code Downloads & Execution from Browsers & Exploited Applications	alliance_score_nvd:* AND childproc_count:[1 TO *]	Carbon Black Advanced Analyst Course	7/8/2016	1-3 (Recon Weapon Delivery)	 	
+Untrusted Child Processes of Email Clients	events	Local File	0	Spear Phishing	-alliance_score_srstrust:* AND (parent_name:outlook.exe OR parent_name:eudora.exe OR parent_name:thunderbird.exe)	Carbon Black Advanced Analyst Course	6/27/2016	1-3 (Recon Weapon Delivery)	 	
+Processes accessing Tor Network	events	Local File	0	Exfiltration	alliance_score_tor:*	Carbon Black Advanced Analyst Course	6/27/2016	7 (Actions & Objectives)	 	
+Processes that have VT score > 10, and more than 1 network connection	events	Local File	50	Exfiltration	alliance_score_virustotal:[10 TO *] AND netconn_count:[1 TO *]	Carbon Black Advanced Analyst Course		7 (Actions & Objectives)	 Known Malware that is Network Aware	
+Known malware network aware	events	Local File	0	Exfiltration	alliance_score_virustotal:[5 TO *] AND netconn_count:[1 TO *]	Carbon Black Advanced Analyst Course		7 (Actions & Objectives)	 	
+Command prompt started by commonly compromised programs (browsers, Acrobat, Java, etc.) 	events	Local File	50	Exploitation	childproc_name:cmd.exe AND (parent_name:iexplore.exe OR parent_name:firefox.exe OR parent_name:chrome.exe OR parent_name:acrord32.exe OR parent_name:java.exe OR parent_name:javaw.exe OR parent_name:*flash*)	Carbon Black Advanced Analyst Course	6/27/2016	4-5 (Exploit Install)	 https://community.carbonblack.com/message/6043#comment-6043, browser exploits have these suspicious IOCs	
+Any process that spawned a shell	events	Local File	50	Malicious Code Downloads & Execution from Browsers & Exploited Applications	childproc_name:powershell.exe OR childproc_name:cmd.exe	Carbon Black Advanced Analyst Course	6/27/2016	1-3 (Recon Weapon Delivery)	 Putting it Together (Exploitable Applications Launching a Shell Command)	
+changes to HKCU registry location based on the PaloAlto Networks report on Wekby	events	Local File	90		cmd.exe /c reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run or cmdline:cmd.exe /c reg add HKCU	Carbon Black Detection Exchange			 http://researchcenter.paloaltonetworks.com/2016/05/unit42-new-wekby-attacks-use-dns-requests-as-command-and-control-mechanism/ and https://community.carbonblack.com/docs/DOC-4634	5/31/2016
+ NetworkSpreader worm's lateral movement	events	Local File	100	Lateral Movement	"cmdline:""-accepteula"" AND cmdline:""-c"" AND (cmdline:""-d"" OR cmdline:""-s"")"	Carbon Black Detection Exchange		6 (C2C)	 https://community.carbonblack.com/docs/DOC-3903	1/30/2016
+Detect the explorer.exe firewall exception that dridex puts in place for C2 communication from explorer.exe after its injected into it.	events	Local File	95		"cmdline:""advfirewall firewall add rule"" and cmdline:""program=\""C:\Windows\Explorer.EXE\"" dir=in action=allow protocol=TCP localport=any"""	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-4009	2/18/2016
+Copying binary files via CMD	events	Local File	50	Time Stomping/Unusual File Manipulation	"cmdline:""copy /b"""	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+Process to erase master boot record	events	Local File	0	Destruction	"cmdline:""fdisk /mbr"""	Carbon Black Advanced Analyst Course		7 (Actions & Objectives)	Processes: No hits, none for cmdline:fdisk/mbr either 	
+Net use	events	Local File	50	Lateral Movement	"cmdline:""net use"""	Carbon Black Advanced Analyst Course		6 (C2C)	 Unusual creation of network shares	
+Registry key addition	events	Local File	50	Establish Persistence	"cmdline:""reg"" AND cmdline:""add"""	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 RunKeys updates; http://researchcenter.paloaltonetworks.com/2016/05/unit42-new-wekby-attacks-use-dns-requests-as-command-and-control-mechanism/	
+Creating services	events	Local File	50	Establish Persistence	"cmdline:""sc create"""	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 Service creation: cmdline:	
+ Looks for Powershell cmdline strings that are longer than the limit captured by Enterprise Response.	events	Local File	75		cmdline:\(truncated\) cmdline:-windowstyle OR cmdline:-w	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-4320	4/12/2016
+Dridex infection via Maldoc	events	Local File	100		cmdline:cmd /c certutil -decode process_name:cmd.exe parent_name:winword.exe	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-4610	5/23/2016
+Adding local users	events	Local File	50	Privilege Escalation	cmdline:net AND (cmdline:user OR cmdline:localgroup) AND cmdline:/add	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	" Instances of ""net user"";  creating a new windows user most likely with intent of escalating privilege and establishing persistence"	
+Pattern based on the control file and command line option utilized	events	Local File	60		cmdline:-s AND filemod:*.dat	Carbon Black Using Carbon Black for Incident Response Group	7/20/2016		 https://community.carbonblack.com/thread/1245	12/5/2014
+Unsigned binaries creating threads in other processes	events	Local File	50	Establish Persistence	"crossproc_type:""remotethread"" -digsig_result:Signed"	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+Powershell creating remote threads	events	Local File	50	Establish Persistence	"crossproc_type:""remotethread"" process_name:powershell.exe"	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+Sysinternals (-bginfo)	events	Local File	50	Destruction	"digsig_prog_name:""Sysinternals Utilities"" -process_name:bginfo.exe"	Deloitte IR/CB Pro Services		7 (Actions & Objectives)	 bginfo tool usuallly used to change desktop background; potentially used in delivering ransomware's ransom message. https://technet.microsoft.com/en-us/sysinternals/bginfo.aspx	
+Microsoft signed binaries run from unusual paths	events	Local File	50	Privilege Escalation	"digsig_publisher:""Microsoft Corporation"" AND -path:windows* AND -path:program\ files*"	Deloitte IR/CB Pro Services	6/27/2016	4-5 (Exploit Install)	 Using Microsoft tools in atypical locations indicates attempts at exploitation	
+Unsigned process of encrypting files	events	Local File	0	Destruction	"-digsig_result:""Signed"" AND cmdline:""cipher"""	Carbon Black Advanced Analyst Course	6/18/2016	7 (Actions & Objectives)	 	
+Unsigned binary spawning svchost.exe	events	Local File	100	Privilege Escalation	digsig_result:Unsigned childproc_name:svchost.exe	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-3839	
+Detecting a static file name for a securityxploded module output as well as a file name for behavior specific to this Hawkeye keylogger	events	Local File	90		"filemod:""holdermail.txt"" or filemod:""pidloc.txt"""	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-4110	3/15/2016
+Modification to startup folder	events	Local File	50	Establish Persistence	"filemod:""Start Menu\Programs\Startup"""	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 StartMenu updates	
+Unusual processed manipulating sensitive data files	events	Local File	0	Exfiltration	filemod:*.pst AND -process_name:outlook.exe	Carbon Black Advanced Analyst Course	6/18/2016	7 (Actions & Objectives)	 	
+filemod:\(null\)_Post AND filemod:Logs/* AND filemod:cr-silent/* AND modload:open (Null file modification)	events	Local File	50		filemod:\(null\)_Post AND filemod:Logs/* AND filemod:cr-silent/* AND modload:open	Deloitte IR/CB Pro Services			 	
+Unsigned files written to Outlook content folder	events	Local File	50	View Outlook Email Attachments	filemod:Content.Outlook\* and -digsig_result_filewrite:Signed	Deloitte IR/CB Pro Services	6/27/2016	1-3 (Recon Weapon Delivery)	 	
+Executable files written to Outlook content folder	events	Local File	50		filemod:Content.Outlook\* and is_executable_image_filewrite:True	Deloitte IR/CB Pro Services		1-3 (Recon Weapon Delivery)	 	
+Modification of executables for accessibility options or sticky keys	events	Local File	50	Privilege Escalation	filemod:windows/system32/sethc.exe OR filemod:windows/system32/utilman.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4463 ; Carbon Black for integrity monitoring	
+> 500 file modifications (filemod check)	events	Local File	50	Exfiltration	filemod_count:[500 TO *]	Deloitte IR/CB Pro Services	6/27/2016	7 (Actions & Objectives)	filemod_count:[1000 TO *]; Mass amounts of file modification indicate exfiltration/alteration of files	
+Looks for files typically dropped by various ransomware infection	events	Local File	100		help_your_files.png or filemod:help_your_files.txt or filemod:help_your_files.html or filemod:help_decrypt.html or filemod:help_decrypt.txt	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-4442	7/11/2016
+Process to access common open data ports	events	Local File	0		ipport:20 OR ipport21 OR ipport:22	Carbon Black Advanced Analyst Course	7/14/2016	7 (Actions & Objectives)	 	
+IP traffic on port 3389	events	Local File	50	External Networking Connection	ipport:3389	Carbon Black Advanced Analyst Course	7/14/2016	6 (C2C)	 	
+Web ports used by non-browsers	events	Local File	50	External Networking Connection	ipport:80 AND ipport:443 AND ipport:8080 AND -process_name:chrome.exe AND -process_name:iexplore.exe	Carbon Black Advanced Analyst Course	7/14/2016	6 (C2C)	 	
+Qbot (Qakbot) detection	events	Local File	100		MD5:8bb9472bb8ae67fb252084f023db7e56	Carbon Black Detection Exchange	7/14/2016		https://community.carbonblack.com/docs/DOC-3926	2/3/2016
+Past Static IOC Based Search	events	Local File	100		md5:D1C27EE7CE18675974EDF42D4EEA25C6 or md5:93BC819011B2B3DA8487F964F29EB934 or md5:760C35A80D758F032D02CF4DB12D3E55 or md5:E1864A55D5CCB76AF4BF7A0AE16279A or ipaddr:203.131.222.102 or ipaddr:217.96.33.164 or ipaddr:88.53.215.64	Carbon Black Using Carbon Black for Incident Response Group			 https://community.carbonblack.com/thread/1245	12/5/2014
+Detect TeslaCrypt	events	Local File	0		"modload:c:\windows\system32\* AND cmdline:""shadowcopy delete"""	Carbon Black Detection Exchange			 comment on post https://community.carbonblack.com/docs/DOC-4066	4/6/2016
+CryptoLocker (destruction)	events	Local File	0	Destruction	modload:rsaenh.dll process_name:*.exe filemod_count:[1000 TO *] path:AppData* regmod_count:[1 TO *] -process_name:chrome.exe -process_name:iexplorer.exe	Carbon Black Advanced Analyst Course	6/27/2016	7 (Actions & Objectives)	 	
+Detecting mimikatz	events	Local File	0		modload:samlib.dll AND modload:vaultcli.dll AND -digsig_result:signed	Carbon Black Using Carbon Black for Incident Response Group	7/3/2016		 https://community.carbonblack.com/docs/DOC-1793	2/17/2015
+Internet Explorer compromise	events	Local File	50		modload:vgx.dll AND process_name:iexplore.exe AND modload:*.ocx AND childproc_name:*.dll	Deloitte IR/CB Pro Services			 	
+Watchlist for windows credental editor	events	Local File	0		modload:wceaux.dll	Carbon Black Using Carbon Black for Incident Response Group			 https://community.carbonblack.com/docs/DOC-1753	2/10/2015
+TRANWOS Backdoor is trojan that allows remote attackers to collect confidential and personal data	events	Local File	100		modload=wow.dll 	Carbon Black Detection Exchange		6 (C2C)	 https://community.carbonblack.com/docs/DOC-3852	1/27/2016
+Network aware, unsigned applications on sesitive systems 	events	Local File	0	Exfiltration	"netconn_count:[1 TO *] AND -digsig_result:""Signed"" AND (group:""<Domain Controllers>"" OR group: ""<Database Servers>"")"	Carbon Black Advanced Analyst Course		7 (Actions & Objectives)	Processes: No hits, need to remove/replace <> 	
+Not signed binaries initiating connections to public IPs	events	Local File	50		netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows	Deloitte IR/CB Pro Services	6/27/2016		 	
+Unsigned binaries initiating connections to public IPs	events	Local File	50		netconn_count:[1 TO *] AND digsig_result:Unsigned AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255] OR ipaddr:[64.53.32.192 to 64.53.32.192])  AND os_type:windows	Deloitte IR/CB Pro Services	6/27/2016		 	
+Process spawned via Acrobat	events	Local File	50		parent_name:acrord32.exe	Deloitte IR/CB Pro Services		1-3 (Recon Weapon Delivery)	 	
+Process spawned via browser	events	Local File	50		parent_name:chrome.exe OR parent_name:iexplore.exe OR parent_name:firefox.exe	Deloitte IR/CB Pro Services	6/22/2016	1-3 (Recon Weapon Delivery)	 	
+Process spawned via Java/Javaw	events	Local File	50		parent_name:java.exe OR parent_name:javaw.exe	Deloitte IR/CB Pro Services	6/27/2016	1-3 (Recon Weapon Delivery)	 	
+Process spawned via Outlook	events	Local File	50		parent_name:outlook.exe	Deloitte IR/CB Pro Services	6/27/2016	1-3 (Recon Weapon Delivery)	 	
+Child Processes of cmd.exe or powershell.exe	events	Local File	0	Malicious Code Downloads & Execution from Browsers & Exploited Applications	parent_name:powershell.exe OR parent_name:cmd.exe	Carbon Black Advanced Analyst Course	6/27/2016	1-3 (Recon Weapon Delivery)	 	
+Process spawned via Services.exe with >1 network connection	events	Local File	50	Intercepting Communication & Instructions	parent_name:services.exe AND netconn_count:[1 TO *]	Carbon Black Advanced Analyst Course	6/22/2016	6 (C2C)	 Services that are Network Aware	
+Wininit started by something other than smss.exe	events	Local File	50		-parent_name:smss.exe AND parent_name:* AND process_name:wininit.exe	Deloitte IR/CB Pro Services			 	
+Unsigned binaries started by taskeng.exe that have network communications with public IP space	events	Local File	50		parent_name:taskeng.exe AND netconn_count:[1 TO *] AND -digsig_result:signed AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255])  AND os_type:windows -alliance_score_deloitteexceptions:[1 TO *] 	Deloitte IR/CB Pro Services			 	
+Taskeng.exe starting at.exe or schtasks.exe	events	Local File	50	Establish Persistence	parent_name:taskeng.exe OR process_name:at.exe OR process_name:schtasks.exe	Deloitte IR/CB Pro Services	6/22/2016	4-5 (Exploit Install)	 Scheduled Tasks/At Jobs	
+Process spawned via Word	events	Local File	50		parent_name:winword.exe	Deloitte IR/CB Pro Services		1-3 (Recon Weapon Delivery)	 	
+Process spawned via Word, Excel, PowerPoint, or Acrobat Reader	events	Local File	50		parent_name:winword.exe OR parent_name:excel.exe OR parent_name:powerpnt.exe OR parent_name:AcroRd32.exe	Deloitte IR/CB Pro Services	6/22/2016	1-3 (Recon Weapon Delivery)	 	
+Execution from the Recycle Bin	events	Local File	0	Obfuscation/Polymorphism	path:$recycle*	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 	
+Processes launching from Non-standard paths that are Non-Signed (path: C or D)	events	Local File	0	Processes launching from Non-standard paths that are Non-Signed	-path:C* and -path:D* AND -digsig_result:'Signed'	Carbon Black Advanced Analyst Course	6/18/2016	1-3 (Recon Weapon Delivery)	 	
+Execution from RECYCLER	events	Local File	50	Obfuscation/Polymorphism	path:RECYCLER/*.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+Execution from System Volume Information	events	Local File	50		path:System\ Volume\ Information*	Deloitte IR/CB Pro Services			 	
+Execution from Windows/IME	events	Local File	50		path:Windows/IME/*.exe	Deloitte IR/CB Pro Services			 	
+Enumeration of user sessions	events	Local File	50		path:windows/system32/quser.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 Bit9 Definitions	
+Detect poweliks (and similar variants) execution by looking for rundll32 and keywords relating to execution of javascript.	events	Local File	90		"process_name:""rundll32.exe"" (cmdline:""javascript"" OR cmdline:""mshtml,runhtmlapplication"")"	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4034	2/23/2016
+Suspicious filename (extension hiding)	events	Local File	50		process_name:*.txt.exe OR process_name:*.pdf.exe OR process_name:*.rtf.exe OR process_name:*.jpg.exe OR process_name:*.xml.exe OR process_name:*.gif.exe OR process_name:*.htm.exe OR process_name:*.html.exe OR process_name:*.zip.exe	Deloitte IR/CB Pro Services	6/22/2016	1-3 (Recon Weapon Delivery)	 Bit9 Definitions; Malicious code is delivered with a false file extension to trick user to clicking on an executable	
+Scheduled task execution	events	Local File	50	Establish Persistence	process_name:at.exe OR process_name:schtask.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+execution of the malicious chrome.exe process	events	Local File	0		process_name:chrome.exe and digsig_result:unsigned and md5:e8a30ccef9157ba2ee04ba95cf782b4d	Carbon Black Using Carbon Black for Incident Response Group			 https://community.carbonblack.com/thread/2543	1/7/2016
+cmd.exe was spawned which echoed javascript and then used wscript to download the .tmp.dll (for CryptXXX) (filemod)	events	Local File	95		process_name:cmd.exe cmdline:echo (cmdline:&& or cmdline:&) filemod_count:[1 TO *]	Carbon Black Detection Exchange	7/27/2016	4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4585#comment-4483	6/10/2016
+CMD shell spawned by Excel	events	Local File	50		process_name:cmd.exe parent_name:excel.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	" CB Exchange ""Attackers execute macros or other executables with an MS Office document to obtain persistence or further exploit a system"""	
+Typical troubleshooting / enumeration tools	events	Local File	50		process_name:enum.exe OR process_name:sc.exe OR process_name:netsh.exe OR process_name:arp.exe OR process_name:nmap.exe OR process_name:tasklist.exe OR process_name:tracert.exe OR process_name:ping.exe OR process_name:netstat.exe	Carbon Black Advanced Analyst Course	6/22/2016	1-3 (Recon Weapon Delivery)	Processes: No hits, even for individual searches CB Anaylst Training; Administration Tools potentially used to probe the environment	
+Regedit spawned by process other than explorer	events	Local File	50		process_name:explorer.exe AND (childproc_name:regedit.exe OR childproc_name:regedt32.exe)	Deloitte IR/CB Pro Services			 	
+FTP/SFTP usage	events	Local File	50	Exfiltration	process_name:ftp.exe OR process_name:sftp.exe	Deloitte IR/CB Pro Services		7 (Actions & Objectives)	 CB Anaylst Training; data can be sent through ftp to external server (beaconing)	
+Internet Explorer run by SYSTEM	events	Local File	50		process_name:iexplore.exe username:system	Deloitte IR/CB Pro Services	7/26/2016		 	
+Suspicious filename (misspelled system files)	events	Local File	50		process_name:isass.exe OR process_name:svch0st.exe OR process_name:svchost.dll OR process_name:lexplore.exe OR process_name:lexplorer.exe OR process_name:svchosts.exe OR process_name:csrsr.exe	Deloitte IR/CB Pro Services			 	
+RDP sessions to external IP space	events	Local File	50		process_name:mstsc.exe AND (ipaddr:[0.0.0.0 to 9.255.255.255] OR ipaddr:[11.0.0.0 to 100.63.255.255] OR ipaddr:[100.128.0.0 to 127.0.0.0] OR ipaddr:[127.0.0.2 to 127.255.255.255] OR ipaddr:[128.0.0.0 to 172.15.255.255] OR ipaddr:[172.32.0.0 to 191.255.255.255] OR ipaddr:[193.0.0.0 to 192.167.255.255] OR ipaddr:[192.169.0.0 to 198.17.255.255] OR ipaddr:[198.20.0.0 to 255.255.255.255]) AND -ipaddr:[64.53.32.0 to 64.53.32.254]) -domain:ctldl.windowsupdate.com	Deloitte IR/CB Pro Services	6/22/2016		 	
+Net.exe started by process other than gpshell.exe	events	Local File	50		process_name:net.exe -parent_name:gpshell.exe	Deloitte IR/CB Pro Services			 	
+Netcat/Cryptcat	events	Local File	0	Lateral Movement Netcat & variants	process_name:netcat.exe OR process_name:ncat.exe OR cmdline:nc OR process_name:cryptcat.exe OR process_name:ccat.exe	Carbon Black Advanced Analyst Course	7/14/2016	6 (C2C)	 	
+Notepad spawning child process	events	Local File	50		process_name:notepad.exe AND childproc_name:*.exe	Deloitte IR/CB Pro Services			 	
+Use NTDSUTIL.exe to dump a copy of Active Directory ntds.dit, facilitating theft of credential and other ad data stored in this ESE database	events	Local File	100	Exfiltration	process_name:ntdsutil.exe (cmdline:in or cmdline:instance or cmdline:fu or cmdline:full)	Carbon Black Detection Exchange		7 (Actions & Objectives)	 https://community.carbonblack.com/docs/DOC-4454	4/27/2016
+Powershell spawning dllhost.exe	events	Local File	50		process_name:powershell.exe AND childproc_name:dllhost.exe	Deloitte IR/CB Pro Services			 	
+Powershell Bypass	events	Local File	50	Malicious PowerShell Usage	process_name:powershell.exe and cmdline:bypass	Deloitte IR/CB Pro Services		1-3 (Recon Weapon Delivery)	 	
+Powershell Encoded Command	events	Local File	50	Malicious PowerShell Usage	process_name:powershell.exe and cmdline:-encodedcommand	Deloitte IR/CB Pro Services		1-3 (Recon Weapon Delivery)	 	
+Powershell IEX	events	Local File	50	Malicious PowerShell Usage	process_name:powershell.exe AND cmdline:iex	Deloitte IR/CB Pro Services		1-3 (Recon Weapon Delivery)	 	
+Dumping hashes for PTH/lateral movement	events	Local File	100	Lateral Movement	process_name:powershell.exe AND crossproc_name:lsass.exe	Carbon Black Detection Exchange	6/28/2016	6 (C2C)	 https://community.carbonblack.com/docs/DOC-3914	2/4/2016
+PowerShell Making a netconn with unusual parameters	events	Local File	0	Malicious Powershell Usage	"process_name:powershell.exe AND netconn_count:[1 TO *] AND (cmdline:""-Enc"" OR cmdline:""-Exec"" OR cmdline:""bypass"" OR cmdline:""hidden"" OR cmdline:""-NoP"")
+"	Carbon Black Detection Exchange		1-3 (Recon Weapon Delivery)	 comment on post https://community.carbonblack.com/docs/DOC-4246	3/29/2016
+Powershell started by rundll32.exe	events	Local File	50	Malicious PowerShell Usage	process_name:powershell.exe AND parent_name:rundll32.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+Powershell Download	events	Local File	50		process_name:powershell.exe cmdline:net.webclient\).downloadstring\(http:	Deloitte IR/CB Pro Services	6/22/2016		 	
+Powershell started by process other than explorer or gpscript	events	Local File	50		process_name:powershell.exe -parent_name:explorer.exe -parent_name:gpscript.exe	Deloitte IR/CB Pro Services	6/28/2016		 	
+RAR usage	events	Local File	50	Privilege Escalation	process_name:rar.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+Reg Usage	events	Local File	0	Persistence 	process_name:reg.exe	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 	
+anomalous behavior for the regsvr32 process	events	Local File	0		process_name:regsvr32.exe and netconn_count:[1 to *] or modload:scrobj.dll	Carbon Black Threat Intel Group			 https://community.carbonblack.com/docs/DOC-4444	4/26/2016
+cmd.exe was spawned which echoed javascript and then used wscript to download the .tmp.dll (for CryptXXX) with regsvr32	events	Local File	95		process_name:regsvr32.exe modload:*.tmp.dll	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4585#comment-4483	6/10/2016
+Robocopy usage	events	Local File	50	Privilege Escalation	process_name:robocopy.exe	Deloitte IR/CB Pro Services	6/28/2016	4-5 (Exploit Install)	 	
+Runas usage	events	Local File	50	Privilege Escalation	process_name:runas.exe OR cmdline:runas	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 	
+Rundll32 usage	events	Local File	50	Privilege Escalation	process_name:rundll32.exe	Deloitte IR/CB Pro Services	6/28/2016	4-5 (Exploit Install)	 	
+Rundll32 used to run html	events	Local File	50		"process_name:rundll32.exe AND cmdline:""mshtml,runhtmlapplication"""	Deloitte IR/CB Pro Services			 	
+Rundll32 used to run javascript	events	Local File	50		"process_name:rundll32.exe cmdline:""javascript:\"""""	Deloitte IR/CB Pro Services			 	
+Smss started by suspicious process	events	Local File	50		process_name:smss.exe AND parent_name:* AND -parent_name:smss.exe AND -parent_name:ntkrnlpa.exe AND -parent_name:ntoskrnl.exe	Deloitte IR/CB Pro Services			 	
+Svchost with unusual username	events	Local File	50		"process_name:svchost.exe (-username:SYSTEM OR -username:""NETWORK SERVICE"" OR -username:""LOCAL SERVICE"")"	Deloitte IR/CB Pro Services			 	
+Pattern Based on the creation of the destructive malware	events	Local File	100		process_name:taskhost*.exe AND -digsig_result:Signed	Carbon Black Using Carbon Black for Incident Response Group			 https://community.carbonblack.com/thread/1245	12/5/2014
+ Detects anytime Taskmgr.exe Dumps a Process	events	Local File	0		process_name:taskmgr.exe crossproc_name:lsass.exe filemod:lsass*.dmp	Carbon Black Using Carbon Black for Incident Response Group			 https://community.carbonblack.com/thread/2274	10/30/2016
+Windows Credential Editor usage	events	Local File	50	Privilege Escalation	process_name:wce.exe	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+WMIC usage	events	Local File	50	Privilege Escalation	process_name:wmic.exe	Carbon Black Advanced Analyst Course		4-5 (Exploit Install)	 	
+"
+
+Pattern based on the dropper strings
+"	events	Local File	50		process_name:wmic.exe AND cmdline:process AND cmdline:call AND cmdline:create	Carbon Black Using Carbon Black for Incident Response Group			 https://community.carbonblack.com/thread/1245	12/5/2014
+Wscript usage	events	Local File	50		process_name:wscript.exe	Deloitte IR/CB Pro Services	6/22/2016		 	
+cmd.exe was spawned which echoed javascript and then used wscript to download the .tmp.dll (for CryptXXX) (scripts)	events	Local File	95		"process_name:wscript.exe (cmdline:""//E:JScript"" or cmdline:""//E:vbscript"" or cmdline:""/E:JScript"" or cmdline:""/E:vbscript"" or cmdline:""-E:JScript"" or cmdline:""-e:vbscript"") netconn_count:[1 TO *]"	Carbon Black Detection Exchange		4-5 (Exploit Install)	 https://community.carbonblack.com/docs/DOC-4585#comment-4483	6/10/2016
+Simple registry modification used by Locky	events	Local File	95		"regmod:""\Software\Locky"" or regmod:""\Software\Locky\id"" or regmod:""\Software\Locky\pubkey"" or regmod:""\Software\Locky\paytext"""	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-4003 and https://medium.com/@networksecurity/locky-ransomware-virus-spreading-via-word-documents-51fcb75618d2#.wt7dyc9ph	2/17/2016
+"Detecting a registry modification where this malware stores its data. ""Fileless"" -- what it really means is it writes it to a registry key. Similar concept to poweliks."	events	Local File	95	Detect the storage of the encoded data blob for Gootkit's DLL payload	"regmod:""Software\AppDataLow\binaryImage32_0"" or regmod:""Software\AppDataLow\binaryImage64_0"""	Carbon Black Detection Exchange		1-3 (Recon Weapon Delivery)	 https://community.carbonblack.com/docs/DOC-4002	2/17/2016
+Registry modification to context menu	events	Local File	50		"regmod:""software\classes\*"" AND regmod:""shellex\contextmenuhandlers"""	Deloitte IR/CB Pro Services	6/28/2016		 	
+Startup Registry Modification (Run)	events	Local File	50	Establish Persistence	"regmod:""software\microsoft\windows\currentversion\run"""	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+Startup Registry Modification (RunOnce)	events	Local File	50	Establish Persistence	"regmod:""software\microsoft\windows\currentversion\runonce"""	Deloitte IR/CB Pro Services		4-5 (Exploit Install)	 	
+This watchlist takes advantage of a hardcoded bogus registry modification for Pony 2.0	events	Local File	95	Pony Downloader. Commonly used by script kiddies since the source code leak. Also commonly used in deploying Vawtrak and as a general credential stealer.	"regmod:""software\winrar\HWID"""	Carbon Black Detection Exchange			 community.carbonblack.com/docs/DOC-3980	2/11/2016
+Registry modification to Hidden entry by process other than explorer	events	Local File	50		regmod:\registry\user\*\software\microsoft\windows\CurrentVersion\Explorer\Advanced\Hidden And -process_name:explorer.exe	Deloitte IR/CB Pro Services			 	
+Registry modification to UILanguages	events	Local File	50		regmod:control\MUI\UILanguages\*	Deloitte IR/CB Pro Services			 	
+Startup Registry Modification (Run*) (current version)	events	Local File	50	Establish Persistence	regmod:CurrentVersion\Run*	Carbon Black Advanced Analyst Course	6/28/2016	4-5 (Exploit Install)	 RunKeys updates	
+Look for a known keyword registry modification for DarkComet RAT	events	Local File	95		regmod:DC3_FEXEC or regmod:DC2_USERS	Carbon Black Detection Exchange			 https://community.carbonblack.com/docs/DOC-3998	2/12/2016
+" registry modification that can be used to abuse the ""debugger"" feature of Windows, whereby a second executable is automatically launched at the same time as another executable"	events	Local File	60		regmod:image\ file\ execution\ options\*\debugger -process_name:procexp64.exe -process_name:msiexec.exe	Carbon Black Detection Exchange			" Windows doesn't check if the second executable is actually a debugger or not, so this feature can be abused in various ways. Changing these registry keys does require administrative access, so would likely occur in the ""post-exploitation"" phase, not as a direct means of exploitation or privilege escalation. https://community.carbonblack.com/docs/DOC-3917"	2/4/2016
+Pattern based on the creation of the persistence service	events	Local File	90		regmod:system\currentcontrolset\services\WinsSchMgmt*	Carbon Black Using Carbon Black for Incident Response Group			 https://community.carbonblack.com/thread/1245	12/5/2014
+looks for regsvr32.exe with cross proc into other services	events	Local File	100		"regsvr32.exe crossproc_type:""remotethread"" "	Carbon Black Detection Exchange	6/28/2016		 https://community.carbonblack.com/docs/DOC-3858	1/26/2016
